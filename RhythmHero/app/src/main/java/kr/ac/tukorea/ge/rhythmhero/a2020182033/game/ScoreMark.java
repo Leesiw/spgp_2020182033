@@ -27,7 +27,7 @@ public class ScoreMark extends Sprite implements IRecyclable {
     @Override
     public void update() {
         super.update();
-        alpha -= BaseScene.frameTime * 100;
+        alpha -= BaseScene.frameTime * 200;
         if(alpha <= 0){
             BaseScene.getTopScene().remove(MainScene.Layer.score_mark, this);
         }
