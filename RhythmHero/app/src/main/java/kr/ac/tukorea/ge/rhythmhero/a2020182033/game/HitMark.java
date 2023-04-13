@@ -102,6 +102,7 @@ public class HitMark extends Mark implements IRecyclable{
 
         if (touch_timing - MainScene.song_play_time < -RADIUS) {
             BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, new ScoreMark(x, y, 0));
         }
     }
 

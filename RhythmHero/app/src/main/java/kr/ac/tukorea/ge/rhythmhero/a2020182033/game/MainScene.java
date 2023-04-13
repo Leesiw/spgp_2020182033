@@ -10,7 +10,7 @@ public class MainScene extends BaseScene {
     public static float song_play_time;
 
     public enum Layer {
-        hit_mark, slide_mark, COUNT
+        hit_mark, slide_mark, spin_mark, score_mark, COUNT
     }
 
     public MainScene() {
