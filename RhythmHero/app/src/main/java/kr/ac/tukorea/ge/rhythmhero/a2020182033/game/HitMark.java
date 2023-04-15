@@ -100,7 +100,7 @@ public class HitMark extends Mark implements IRecyclable{
     public void update() {
         super.update();
 
-        if (touch_timing - MainScene.song_play_time < -RADIUS) {
+        if (touch_timing - MainScene.song_play_time < -1.f) {
             BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, new ScoreMark(x, y, 0));
         }
@@ -113,7 +113,10 @@ public class HitMark extends Mark implements IRecyclable{
 
         canvas.save();
         float circle_size = RADIUS + (touch_timing - MainScene.song_play_time) * TIME_SIZE;
-        canvas.drawCircle(x, y, circle_size, circle2Paint);
+        if(circle_size >= RADIUS) {
+            canvas.drawCircle(x, y, circle_size, circle2Paint);
+        }
+
         canvas.drawCircle(x, y, RADIUS, circle1Paint);
         canvas.restore();
     }

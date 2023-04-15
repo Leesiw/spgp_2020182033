@@ -26,7 +26,7 @@ public class Sprite implements IGameObject {
         Log.v(TAG, "Created " + this.getClass().getSimpleName() + "@" + System.identityHashCode(this));
     }
 
-    protected void setBitmapResource(int bitmapResId) {
+    public void setBitmapResource(int bitmapResId) {
         bitmap = BitmapPool.get(bitmapResId);
     }
 
