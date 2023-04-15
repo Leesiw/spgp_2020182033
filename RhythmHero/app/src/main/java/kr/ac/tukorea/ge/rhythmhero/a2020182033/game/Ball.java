@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
 
 import android.graphics.Canvas;
+import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
@@ -71,5 +72,9 @@ public class Ball extends Sprite {
 
     public int getReturn_num() {
         return return_num;
+    }
+
+    public RectF getdstRect(){
+        return this.dstRect;
     }
 }
