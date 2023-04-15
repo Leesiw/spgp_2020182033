@@ -29,6 +29,9 @@ public class SlideMark extends Mark implements IRecyclable {
     private int return_num;
     private float x1, y1, x2, y2;
 
+    private float line1x1, line1y1, line1x2, line1y2;
+    private float line2x1, line2y1, line2x2, line2y2;
+
     private HitMark hitmark;
     private Sprite circle1;
     private Sprite circle2;
@@ -36,7 +39,6 @@ public class SlideMark extends Mark implements IRecyclable {
     private int score;
 
     private boolean start_circle = true;
-    //Sprite road;
 
     private Paint whitePaint;
     private Paint roadPaint;
@@ -53,6 +55,24 @@ public class SlideMark extends Mark implements IRecyclable {
         this.x2 = x2;
         this.y2 = y2;
         this.score = 0;
+
+        float dx = x1 - x2;
+        float dy = y1 - y2;
+        double radian = Math.atan2(dy, dx);
+
+        dx = SIZE * (float) (Math.cos(radian + 90.f)) / 2;
+        dy = SIZE * (float) (Math.sin(radian + 90.f)) / 2;
+        this.line1x1 = x1 + dx;
+        this.line1y1 = y1 + dy;
+        this.line1x2 = x2 + dx;
+        this.line1y2 = y2 + dy;
+
+        dx = SIZE * (float) (Math.cos(radian - 90.f)) / 2;
+        dy = SIZE * (float) (Math.sin(radian - 90.f)) / 2;
+        this.line2x1 = x1 + dx;
+        this.line2y1 = y1 + dy;
+        this.line2x2 = x2 + dx;
+        this.line2y2 = y2 + dy;
 
 
         hitmark = new HitMark(num, color, x1, y1, appeared_timing, start_timing);
@@ -144,6 +164,9 @@ public class SlideMark extends Mark implements IRecyclable {
         circle2.draw(canvas);
         canvas.drawCircle(x1, y1, RADIUS, whitePaint);
         canvas.drawCircle(x2, y2, RADIUS, whitePaint);
+
+        canvas.drawLine(line1x1, line1y1, line1x2, line1y2, whitePaint);
+        canvas.drawLine(line2x1, line2y1, line2x2, line2y2, whitePaint);
 
         if(hitmark != null){
             hitmark.draw(canvas);
