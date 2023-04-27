@@ -116,15 +116,19 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
 
         if (touched_time > 1.f) {
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 0));
+            MainScene.score.add(0);
         }
         else if(touched_time > 0.5f){
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 1));
+            MainScene.score.add(50);
         }
         else if(touched_time > 0.2f){
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 2));
+            MainScene.score.add(100);
         }
         else{
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 3));
+            MainScene.score.add(300);
         }
         BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
     }

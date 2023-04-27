@@ -41,6 +41,8 @@ public class SlideMark extends Mark implements IRecyclable {
     private Sprite circle1;
     private Sprite circle2;
 
+    private boolean isTouching;
+
     private int score;
 
     private boolean start_circle = true;
@@ -81,7 +83,7 @@ public class SlideMark extends Mark implements IRecyclable {
         this.end_timing = end_timing;
         this.return_num = return_num;
         this.start_timing = start_timing;
-
+        this.isTouching = false;
         this.full_time = end_timing - start_timing;
         this.x1 = x1;
         this.y1 = y1;
@@ -150,9 +152,12 @@ public class SlideMark extends Mark implements IRecyclable {
     }
 
     public void touchedHitMark(float x, float y){
+        this.isTouching = true;
         if(hitmark != null){
             if(CollisionHelper.collides(hitmark, x, y)) {
-                score += hitmark.isTouchedInSlide();
+                int new_score = hitmark.isTouchedInSlide();
+                score += new_score;
+                MainScene.score.add(new_score);
                 hitmark = null;
             }
         }
@@ -161,8 +166,13 @@ public class SlideMark extends Mark implements IRecyclable {
     }
 
     public void setXY(float x, float y){
+        this.isTouching = true;
         this.cur_x = x;
         this.cur_y = y;
+    }
+
+    public void TouchUp(){
+        this.isTouching = false;
     }
 
     @Override
@@ -175,9 +185,10 @@ public class SlideMark extends Mark implements IRecyclable {
 
         if(MainScene.song_play_time > start_timing) {
             if(full_time / 25 * (num + 1) < MainScene.song_play_time - start_timing){
-                if(num < 25) {
-                    if (CollisionHelper.collides(ball, cur_x, cur_y)) {
+                if(num < 24) {
+                    if (isTouching && CollisionHelper.collides(ball, cur_x, cur_y)) {
                         score += 10;
+                        MainScene.score.add(10);
                     }
                 }
                num++;
@@ -202,7 +213,8 @@ public class SlideMark extends Mark implements IRecyclable {
         }
 
         if (end_timing - MainScene.song_play_time < 0.f) {
-            if(CollisionHelper.collides(ball, cur_x, cur_y)){
+            if(isTouching && CollisionHelper.collides(ball, cur_x, cur_y)){
+                MainScene.score.add(30);
                 score += 30;
             }
             BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);

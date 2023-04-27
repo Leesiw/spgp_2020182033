@@ -72,15 +72,19 @@ public class SpinMark extends Mark implements IRecyclable{
         if (end_timing - MainScene.song_play_time < 0.f) {
             if (score > 290) {
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 3));
+                MainScene.score.add(300);
             }
             else if(score > 250){
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 2));
+                MainScene.score.add(100);
             }
             else if(score > 150f){
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 1));
+                MainScene.score.add(50);
             }
             else{
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 0));
+                MainScene.score.add(0);
             }
 
             BaseScene.getTopScene().remove(MainScene.Layer.spin_mark, this);
