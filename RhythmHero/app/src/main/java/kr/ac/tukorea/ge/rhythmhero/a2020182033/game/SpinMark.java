@@ -21,13 +21,17 @@ public class SpinMark extends Mark implements IRecyclable{
     private static Paint bgPaint = new Paint();
     private static Paint fgPaint = new Paint();
 
+    private static float CenterX = Metrics.game_width / 2, CenterY = Metrics.game_height / 2 + 0.5f;
+
     private int score;
-    private float rad;
+    private double cur_angle;
+    private double prev_angle;
+    private boolean touched;
 
     public SpinMark() {
         super(0);
 
-        image = new Sprite(R.mipmap.spinmark, Metrics.game_width / 2, Metrics.game_height / 2 + 0.5f,
+        image = new Sprite(R.mipmap.spinmark, CenterX, CenterY,
                 Metrics.game_height - 1.f, Metrics.game_height - 1.f);
 
         bgPaint.setStyle(Paint.Style.STROKE);
@@ -54,6 +58,9 @@ public class SpinMark extends Mark implements IRecyclable{
         this.score = 0;
         this.appeared_timing = appeared_timing;
         this.end_timing = end_timing;
+        this.prev_angle = 0.f;
+        this.cur_angle = 0.f;
+        this.touched = false;
     }
 
         @Override
@@ -64,11 +71,28 @@ public class SpinMark extends Mark implements IRecyclable{
         }
     }
 
+    public void setPrevAngle(float x, float y){
+        touched = true;
+        prev_angle = Math.toDegrees(Math.atan2(x - CenterX, CenterY - y));
+    }
+    public void isTouched(float x, float y){
+        if(!touched){
+            prev_angle = Math.toDegrees(Math.atan2(x - CenterX, CenterY - y));
+            return;
+        }
+
+        double new_angle = Math.toDegrees(Math.atan2(x - CenterX, CenterY - y));
+
+        cur_angle += new_angle - prev_angle;
+
+        prev_angle = new_angle;
+    }
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
         canvas.save();
-        canvas.rotate(rad);
+        canvas.rotate((float)cur_angle, CenterX, CenterY);
         image.draw(canvas);
         canvas.restore();
 
