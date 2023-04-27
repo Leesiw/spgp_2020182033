@@ -19,8 +19,8 @@ public class SpinMark extends Mark implements IRecyclable{
     public SpinMark() {
         super(0);
 
-        image = new Sprite(R.mipmap.spinmark, Metrics.game_width / 2, Metrics.game_height / 2,
-                Metrics.game_width, Metrics.game_width);
+        image = new Sprite(R.mipmap.spinmark, Metrics.game_width / 2, Metrics.game_height / 2 + 0.5f,
+                Metrics.game_height - 1.f, Metrics.game_height - 1.f);
     }
 
     public static SpinMark get(float appeared_timing, float end_timing) {
