@@ -6,12 +6,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 
-public class HitMark extends Mark implements IRecyclable{
+public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
 
     private Sprite mark;
     private Paint circle1Paint;
@@ -82,6 +83,10 @@ public class HitMark extends Mark implements IRecyclable{
         this.x = x;
         this.y = y;
 
+        float half_width = SIZE / 2;
+        float half_height = SIZE / 2;
+        dstRect.set(x - half_width, y - half_height, x + half_width, y + half_height);
+
         switch(color) {
             case 0:
                 this.circle2Paint.setColor(Color.parseColor("#8CC6E7"));
@@ -104,6 +109,24 @@ public class HitMark extends Mark implements IRecyclable{
                 //R.color.mark_yellow
                 break;
         }
+    }
+
+    public void isTouched(){
+        float touched_time = Math.abs(touch_timing - MainScene.song_play_time);
+
+        if (touched_time > 1.f) {
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 0));
+        }
+        else if(touched_time > 0.5f){
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 1));
+        }
+        else if(touched_time > 0.2f){
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 2));
+        }
+        else{
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 3));
+        }
+        BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
     }
 
     @Override
@@ -133,6 +156,11 @@ public class HitMark extends Mark implements IRecyclable{
 
     @Override
     public void onRecycle() {
+    }
+
+    @Override
+    public RectF getCollisionRect() {
+        return dstRect;
     }
 
 }
