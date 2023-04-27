@@ -36,7 +36,6 @@ public class SpinMark extends Mark implements IRecyclable{
 
         bgPaint.setStyle(Paint.Style.STROKE);
         bgPaint.setStrokeWidth(1.f);
-        // Gauge 생성 시점이 GameView.res 가 설정된 이후여야 한다.
         bgPaint.setColor(ResourcesCompat.getColor(GameView.res, R.color.black, null));
         bgPaint.setStrokeCap(Paint.Cap.ROUND);
         fgPaint.setStyle(Paint.Style.STROKE);
@@ -66,7 +65,24 @@ public class SpinMark extends Mark implements IRecyclable{
         @Override
     public void update() {
         super.update();
-        if (end_timing - MainScene.song_play_time < -1.f) {
+        score -= 10.f * BaseScene.frameTime;
+        if(score < 0){
+            score = 0;
+        }
+        if (end_timing - MainScene.song_play_time < 0.f) {
+            if (score > 290) {
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 3));
+            }
+            else if(score > 250){
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 2));
+            }
+            else if(score > 150f){
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 1));
+            }
+            else{
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(CenterX, CenterY, 0));
+            }
+
             BaseScene.getTopScene().remove(MainScene.Layer.spin_mark, this);
         }
     }
@@ -85,6 +101,12 @@ public class SpinMark extends Mark implements IRecyclable{
 
         cur_angle += new_angle - prev_angle;
 
+        score += Math.abs(new_angle - prev_angle) / 10.f;
+
+        if(score > 300){
+            score = 300;
+        }
+
         prev_angle = new_angle;
     }
 
@@ -98,7 +120,7 @@ public class SpinMark extends Mark implements IRecyclable{
 
         canvas.drawLine(15.f, 1.f, 15.0f, 8.0f, bgPaint);
         if (score > 0) {
-            canvas.drawLine(15.f, 8.f, 15.0f, 8.f - score / 300.f * 8.f, fgPaint);
+            canvas.drawLine(15.f, 8.f, 15.0f, 8.f - score / 300.f * 7.f, fgPaint);
         }
     }
 
