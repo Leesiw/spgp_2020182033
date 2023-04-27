@@ -53,13 +53,21 @@ public class Score implements IGameObject {
     public void draw(Canvas canvas) {
         int value = this.displayScore;
         float x = right;
-        while (value > 0) {
+
+        while (value >= 0) {
+            if(value == 0 && this.displayScore != 0){return;}
             int digit = value % 10;
             srcRect.set(digit * srcCharWidth, 0, (digit + 1) * srcCharWidth, srcCharHeight);
             x -= dstCharWidth;
             dstRect.set(x, top, x + dstCharWidth, top + dstCharHeight);
             canvas.drawBitmap(bitmap, srcRect, dstRect, null);
-            value /= 10;
+
+            if(value != 0) {
+                value /= 10;
+            }
+            else{
+                return;
+            }
         }
     }
 
