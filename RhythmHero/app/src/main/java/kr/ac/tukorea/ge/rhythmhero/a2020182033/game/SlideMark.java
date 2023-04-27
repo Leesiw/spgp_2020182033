@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 
 public class SlideMark extends Mark implements IRecyclable {
 
@@ -44,8 +45,34 @@ public class SlideMark extends Mark implements IRecyclable {
     private Paint roadPaint;
     private Ball ball;
 
-    public SlideMark(int num, int color, float x1, float y1, float x2, float y2, float appeared_timing, float start_timing, float end_timing, int return_num) {
+    public SlideMark() {
         super(appeared_timing);
+
+        this.roadPaint = new Paint();
+        roadPaint.setStyle(Paint.Style.STROKE);
+        //roadPaint.setAntiAlias(true);
+        roadPaint.setStrokeWidth(SIZE);
+
+        whitePaint = new Paint();
+        whitePaint.setStyle(Paint.Style.STROKE);
+        whitePaint.setAntiAlias(true);
+       // whitePaint.setColor(Color.WHITE);
+        whitePaint.setStrokeWidth(0.1f);
+    }
+
+    public static SlideMark get(int num, int color, float x1, float y1, float x2, float y2,
+                                float appeared_timing, float start_timing, float end_timing, int return_num) {
+        SlideMark mark = (SlideMark) RecycleBin.get(SlideMark.class);
+        if (mark == null) {
+            mark = new SlideMark();
+        }
+        mark.init(num, color, x1, y1, x2, y2, appeared_timing, start_timing, end_timing, return_num);
+        return mark;
+    }
+
+    private void init(int num, int color, float x1, float y1, float x2, float y2,
+                      float appeared_timing, float start_timing, float end_timing, int return_num) {
+        this.appeared_timing = appeared_timing;
         this.color = color;
         this.end_timing = end_timing;
         this.return_num = return_num;
@@ -75,7 +102,7 @@ public class SlideMark extends Mark implements IRecyclable {
         this.line2y2 = y2 + dy;
 
 
-        hitmark = new HitMark(num, color, x1, y1, appeared_timing, start_timing);
+        hitmark = HitMark.get(num, color, x1, y1, appeared_timing, start_timing);
         circle1 = new Sprite(resIds[0][color], x1, y1, SIZE, SIZE);
 
         if (return_num > 0){
@@ -85,7 +112,6 @@ public class SlideMark extends Mark implements IRecyclable {
             circle2 = new Sprite(resIds[0][color], x2, y2, SIZE, SIZE);
         }
 
-        this.roadPaint = new Paint();
         switch(color) {
             case 0:
                 this.roadPaint.setColor(Color.parseColor("#8CC6E7"));
@@ -108,17 +134,8 @@ public class SlideMark extends Mark implements IRecyclable {
                 //R.color.mark_yellow
                 break;
         }
-        roadPaint.setStyle(Paint.Style.STROKE);
-        //roadPaint.setAntiAlias(true);
-        roadPaint.setStrokeWidth(SIZE);
 
-        whitePaint = new Paint();
-        whitePaint.setStyle(Paint.Style.STROKE);
-        whitePaint.setAntiAlias(true);
-       // whitePaint.setColor(Color.WHITE);
-        whitePaint.setStrokeWidth(0.1f);
-
-        ball = new Ball(x1, y1, x2, y2, start_timing, end_timing, return_num);
+        ball = Ball.get(x1, y1, x2, y2, start_timing, end_timing, return_num);
     }
 
     @Override
@@ -150,7 +167,7 @@ public class SlideMark extends Mark implements IRecyclable {
 
         if (end_timing - MainScene.song_play_time < -0.f) {
             BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
-            BaseScene.getTopScene().add(MainScene.Layer.score_mark, new ScoreMark(x2, y2, score));
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x2, y2, score));
         }
 
     }

@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 
 public class Ball extends Sprite {
     private static final float SIZE = 1.f;
@@ -20,9 +21,20 @@ public class Ball extends Sprite {
 
     private float angle = 0;
 
-    public Ball(float x1, float y1, float x2, float y2, float start_timing, float end_timing, int return_num){
-        super(R.mipmap.ball, x1, y1, SIZE, SIZE);
+    public Ball(){
+        super(R.mipmap.ball, 0, 0, SIZE, SIZE);
+    }
 
+    public static Ball get(float x1, float y1, float x2, float y2, float start_timing, float end_timing, int return_num) {
+        Ball ball = (Ball) RecycleBin.get(Ball.class);
+        if (ball == null) {
+            ball = new Ball();
+        }
+        ball.init(x1, y1, x2, y2, start_timing, end_timing, return_num);
+        return ball;
+    }
+
+    private void init(float x1, float y1, float x2, float y2, float start_timing, float end_timing, int return_num) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;

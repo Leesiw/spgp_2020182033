@@ -9,6 +9,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 
 public class HitMark extends Mark implements IRecyclable{
 
@@ -48,12 +49,8 @@ public class HitMark extends Mark implements IRecyclable{
 
     protected static float touch_timing;
 
-    public HitMark(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
-        super(appeared_timing);
-        mark = new Sprite(resIds[color][num - 1], x, y, SIZE, SIZE);
-        this.touch_timing = touch_timing;
-        this.x = x;
-        this.y = y;
+    public HitMark() {
+        super(0);
         circle1Paint = new Paint();
         circle1Paint.setStyle(Paint.Style.STROKE);
         circle1Paint.setAntiAlias(true);
@@ -62,6 +59,28 @@ public class HitMark extends Mark implements IRecyclable{
         circle1Paint.setStrokeWidth(0.1f);
 
         this.circle2Paint = new Paint();
+
+        circle2Paint.setStyle(Paint.Style.STROKE);
+        circle2Paint.setAntiAlias(true);
+        circle2Paint.setStrokeWidth(0.1f);
+    }
+
+    public static HitMark get(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
+        HitMark mark = (HitMark) RecycleBin.get(HitMark.class);
+        if (mark == null) {
+            mark = new HitMark();
+        }
+        mark.init(num, color, x, y, appeared_timing, touch_timing);
+        return mark;
+    }
+
+    private void init(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
+        this.appeared_timing = appeared_timing;
+        mark = null;
+        mark = new Sprite(resIds[color][num - 1], x, y, SIZE, SIZE);
+        this.touch_timing = touch_timing;
+        this.x = x;
+        this.y = y;
 
         switch(color) {
             case 0:
@@ -85,11 +104,6 @@ public class HitMark extends Mark implements IRecyclable{
                 //R.color.mark_yellow
                 break;
         }
-
-        circle2Paint.setStyle(Paint.Style.STROKE);
-        circle2Paint.setAntiAlias(true);
-        circle2Paint.setStrokeWidth(0.1f);
-
     }
 
     @Override
@@ -98,7 +112,7 @@ public class HitMark extends Mark implements IRecyclable{
 
         if (touch_timing - MainScene.song_play_time < -1.f) {
             BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
-            BaseScene.getTopScene().add(MainScene.Layer.score_mark, new ScoreMark(x, y, 0));
+            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 0));
         }
     }
 
