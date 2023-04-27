@@ -3,12 +3,14 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 
 public class SlideMark extends Mark implements IRecyclable {
 
@@ -25,10 +27,12 @@ public class SlideMark extends Mark implements IRecyclable {
     };
 
     private int color;
-    private float start_timing;
-    private float end_timing;
+    private float start_timing, end_timing, full_time;
     private int return_num;
     private float x1, y1, x2, y2;
+
+    private float cur_x, cur_y;
+    private int num;
 
     private float line1x1, line1y1, line1x2, line1y2;
     private float line2x1, line2y1, line2x2, line2y2;
@@ -77,11 +81,18 @@ public class SlideMark extends Mark implements IRecyclable {
         this.end_timing = end_timing;
         this.return_num = return_num;
         this.start_timing = start_timing;
+
+        this.full_time = end_timing - start_timing;
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.score = 0;
+
+        this.cur_x = 0.f;
+        this.cur_y = 0.f;
+
+        this.num = 0;
 
         float dx = x1 - x2;
         float dy = y1 - y2;
@@ -138,15 +149,40 @@ public class SlideMark extends Mark implements IRecyclable {
         ball = Ball.get(x1, y1, x2, y2, start_timing, end_timing, return_num);
     }
 
+    public void touchedHitMark(float x, float y){
+        if(hitmark != null){
+            if(CollisionHelper.collides(hitmark, x, y)) {
+                score += hitmark.isTouchedInSlide();
+                hitmark = null;
+            }
+        }
+        this.cur_x = x;
+        this.cur_y = y;
+    }
+
+    public void setXY(float x, float y){
+        this.cur_x = x;
+        this.cur_y = y;
+    }
+
     @Override
     public void update() {
         super.update();
 
-        if (hitmark != null && start_timing - MainScene.song_play_time < -1.f) {
+        if (hitmark != null && start_timing - MainScene.song_play_time < -0.3f) {
             hitmark = null;
         }
 
         if(MainScene.song_play_time > start_timing) {
+            if(full_time / 25 * (num + 1) < MainScene.song_play_time - start_timing){
+                if(num < 25) {
+                    if (CollisionHelper.collides(ball, cur_x, cur_y)) {
+                        score += 10;
+                    }
+                }
+               num++;
+            }
+
             ball.update();
 
             if(ball.getReturn_num() != return_num){
@@ -165,9 +201,24 @@ public class SlideMark extends Mark implements IRecyclable {
             }
         }
 
-        if (end_timing - MainScene.song_play_time < -0.f) {
+        if (end_timing - MainScene.song_play_time < 0.f) {
+            if(CollisionHelper.collides(ball, cur_x, cur_y)){
+                score += 30;
+            }
             BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
-            BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x2, y2, score));
+            if(score == 300) {
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 3));
+            }
+            else if(score >= 100){
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 2));
+            }
+            else if(score >= 50){
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 1));
+            }
+            else{
+                BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 0));
+            }
+            Log.d("Score", ""+ score);
         }
 
     }

@@ -26,8 +26,8 @@ public class MainScene extends BaseScene {
 
         initLayers(Layer.COUNT);
         //add(Layer.hit_mark, HitMark.get(1, 1, 5.f, 5.f, 0.f, 5.f));
-       // add(Layer.slide_mark, SlideMark.get(1, 1, 1.1f, 1.1f, 3.3f, 3.3f, 1.f, 3.f, 6.f, 3));
-        add(Layer.spin_mark, SpinMark.get(0.f, 12.f));
+        add(Layer.slide_mark, SlideMark.get(1, 1, 1.1f, 1.1f, 3.3f, 3.3f, 1.f, 3.f, 6.f, 3));
+        //add(Layer.spin_mark, SpinMark.get(0.f, 12.f));
     }
 
     @Override
@@ -62,6 +62,13 @@ public class MainScene extends BaseScene {
                         return true;
                     }
                 }
+
+                ArrayList<IGameObject> slide_marks = getTopScene().getObjectsAt(Layer.slide_mark);
+                for (int i = slide_marks.size() - 1; i >= 0; i--) {
+                    SlideMark gobj = (SlideMark) slide_marks.get(i);
+                    gobj.touchedHitMark(x, y);
+                    return true;
+                }
                 return true;
             }
             case MotionEvent.ACTION_MOVE: {
@@ -77,7 +84,8 @@ public class MainScene extends BaseScene {
 
                 ArrayList<IGameObject> slide_marks = getTopScene().getObjectsAt(Layer.slide_mark);
                 for (int i = slide_marks.size() - 1; i >= 0; i--) {
-                    SlideMark gobj = (SlideMark) spin_marks.get(i);
+                    SlideMark gobj = (SlideMark) slide_marks.get(i);
+                    gobj.setXY(x, y);
                     return true;
                 }
                 return true;

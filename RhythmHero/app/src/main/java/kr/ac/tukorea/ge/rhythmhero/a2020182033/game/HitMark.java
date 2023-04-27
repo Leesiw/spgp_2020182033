@@ -129,6 +129,23 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
         BaseScene.getTopScene().remove(MainScene.Layer.hit_mark, this);
     }
 
+    public int isTouchedInSlide(){
+        float touched_time = Math.abs(touch_timing - MainScene.song_play_time);
+
+        if (touched_time > 1.f) {
+            return 0;
+        }
+        else if(touched_time > 0.5f){
+            return 5;
+        }
+        else if(touched_time > 0.2f){
+            return 10;
+        }
+        else{
+            return 30;
+        }
+    }
+
     @Override
     public void update() {
         super.update();

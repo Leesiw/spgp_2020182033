@@ -4,11 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 
-public class Ball extends Sprite {
+public class Ball extends Sprite implements IBoxCollidable {
     private static final float SIZE = 1.f;
 
     private float x1, y1, x2, y2;
@@ -48,6 +49,9 @@ public class Ball extends Sprite {
         this.stoe_time = (ball_end_timing - ball_start_timing);
     }
 
+    public float getX(){return x;}
+    public float getY(){return y;}
+
     @Override
     public void update() {
         super.update();
@@ -86,7 +90,6 @@ public class Ball extends Sprite {
         return return_num;
     }
 
-    public RectF getdstRect(){
-        return this.dstRect;
-    }
+    @Override
+    public RectF getCollisionRect() { return this.dstRect; }
 }
