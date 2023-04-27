@@ -92,10 +92,6 @@ public class HitMark extends Mark implements IRecyclable{
 
     }
 
-    private void init(int level) {
-
-    }
-
     @Override
     public void update() {
         super.update();
