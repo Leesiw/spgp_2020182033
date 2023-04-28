@@ -47,22 +47,18 @@ public class SlideMark extends Mark implements IRecyclable {
 
     private boolean start_circle = true;
 
-    private Paint whitePaint;
-    private Paint roadPaint;
+    private static Paint whitePaint = new Paint();
+    private static Paint roadPaint = new Paint();
     private Ball ball;
 
     public SlideMark() {
-        super(appeared_timing);
-
-        this.roadPaint = new Paint();
+        super(0);
         roadPaint.setStyle(Paint.Style.STROKE);
-        //roadPaint.setAntiAlias(true);
         roadPaint.setStrokeWidth(SIZE);
 
-        whitePaint = new Paint();
         whitePaint.setStyle(Paint.Style.STROKE);
         whitePaint.setAntiAlias(true);
-       // whitePaint.setColor(Color.WHITE);
+        //whitePaint.setColor(Color.WHITE);
         whitePaint.setStrokeWidth(0.1f);
     }
 

@@ -13,9 +13,9 @@ public class Ball extends Sprite implements IBoxCollidable {
     private static final float SIZE = 1.f;
 
     private float x1, y1, x2, y2;
-    private float start_timing, end_timing;
+    private float end_timing;
     private float ball_start_timing, ball_end_timing;
-    private float stoe_time;
+    private float full_time;
     private int return_num;
 
     private int dir = 1;
@@ -46,7 +46,8 @@ public class Ball extends Sprite implements IBoxCollidable {
         this.ball_end_timing = (end_timing - start_timing) / (return_num + 1) + start_timing;
         this.return_num = return_num;
 
-        this.stoe_time = (ball_end_timing - ball_start_timing);
+        this.full_time = (ball_end_timing - ball_start_timing);
+        this.angle = 0;
     }
 
     public float getX(){return x;}
@@ -69,8 +70,8 @@ public class Ball extends Sprite implements IBoxCollidable {
 
         float c_time = (-ball_start_timing + MainScene.song_play_time);
 
-        this.x = x1 + (x2 - x1) * c_time / stoe_time;
-        this.y = y1 + (y2 - y1) * c_time / stoe_time;
+        this.x = x1 + (x2 - x1) * c_time / full_time;
+        this.y = y1 + (y2 - y1) * c_time / full_time;
 
 
         fixDstRect();

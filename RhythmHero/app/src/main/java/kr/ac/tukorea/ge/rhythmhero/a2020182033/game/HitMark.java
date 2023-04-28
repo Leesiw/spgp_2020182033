@@ -15,8 +15,8 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
 
     private Sprite mark;
-    private Paint circle1Paint;
-    private Paint circle2Paint;
+    private static Paint circle1Paint = new Paint();
+    private static Paint circle2Paint = new Paint();
 
     float x, y;
     protected RectF dstRect = new RectF();
@@ -48,18 +48,15 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
     public static final float RADIUS = SIZE / 2;
     protected RectF collisionRect = new RectF();
 
-    protected static float touch_timing;
+    protected float touch_timing;
 
     public HitMark() {
         super(0);
-        circle1Paint = new Paint();
         circle1Paint.setStyle(Paint.Style.STROKE);
         circle1Paint.setAntiAlias(true);
         circle1Paint.setStyle(Paint.Style.STROKE);
         circle1Paint.setColor(Color.BLACK);
         circle1Paint.setStrokeWidth(0.1f);
-
-        this.circle2Paint = new Paint();
 
         circle2Paint.setStyle(Paint.Style.STROKE);
         circle2Paint.setAntiAlias(true);
