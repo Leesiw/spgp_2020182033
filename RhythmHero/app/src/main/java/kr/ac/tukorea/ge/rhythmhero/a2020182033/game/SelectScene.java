@@ -21,7 +21,7 @@ public class SelectScene extends BaseScene {
 
     public SelectScene() {
         initLayers(SelectScene.Layer.COUNT);
-        add(Layer.bg, new Sprite(R.mipmap.black, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
+        add(Layer.bg, new Sprite(R.mipmap.pxfuel, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
         add(Layer.button, new Button(R.mipmap.cannonrockbtn1, Metrics.game_width / 2, Metrics.game_height / 2 - 1.3f, 8.f, 2.f,1));
         add(Layer.button, new Button(R.mipmap.rustynailbtn1, Metrics.game_width / 2, Metrics.game_height / 2 + 1.3f, 8.f, 2.f,2));
     }
