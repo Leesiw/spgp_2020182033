@@ -10,18 +10,19 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 
-public class SelectScene extends BaseScene {
-    private static final String TAG = SelectScene.class.getSimpleName();
+public class GameOverScene extends BaseScene {
+    private static final String TAG = GameOverScene.class.getSimpleName();
 
     public enum Layer {
         bg, button, COUNT
     }
 
-    public SelectScene() {
+    public GameOverScene() {
         initLayers(SelectScene.Layer.COUNT);
         add(Layer.bg, new Sprite(R.mipmap.pxfuel, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
-        add(Layer.button, new Button(R.mipmap.cannonrockbtn1, Metrics.game_width / 2, Metrics.game_height / 2 - 1.3f, 8.f, 2.f,1));
-        add(Layer.button, new Button(R.mipmap.rustynailbtn1, Metrics.game_width / 2, Metrics.game_height / 2 + 1.3f, 8.f, 2.f,2));
+        add(Layer.bg, new Sprite(R.mipmap.restart, Metrics.game_width / 2, Metrics.game_height / 2 - 1.f, 4.f, 1.f));
+        add(Layer.button, new Button(R.mipmap.yes, Metrics.game_width / 2 - 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,1));
+        add(Layer.button, new Button(R.mipmap.no, Metrics.game_width / 2 + 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,2));
     }
 
     @Override
@@ -53,4 +54,3 @@ public class SelectScene extends BaseScene {
         return super.onTouchEvent(event);
     }
 }
-
