@@ -12,4 +12,9 @@
     <color name="mark_yellow">#fcc43d</color>
     <color name="mark_purple">#a7a2de</color>
     <color name="mark_green">#6bce9e</color>
+    <color name="yellow">#fbc22c</color>
+    <color name="pink">#f01486</color>
+    <color name="purple">#a067ad</color>
+    <color name="blue">#46a3d2</color>
+    <color name="green">#8ce33d</color>
 </resources>
