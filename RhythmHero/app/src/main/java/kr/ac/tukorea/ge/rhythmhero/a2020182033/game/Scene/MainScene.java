@@ -128,6 +128,11 @@ public class MainScene extends BaseScene {
         if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
         //if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 5000_000f);}
         else{
+            reset();
+
+            remove(Layer.hit_mark);
+            remove(Layer.slide_mark);
+            remove(Layer.spin_mark);
             new GameOverScene().pushScene();
         }
         super.update(elapsedNanos);

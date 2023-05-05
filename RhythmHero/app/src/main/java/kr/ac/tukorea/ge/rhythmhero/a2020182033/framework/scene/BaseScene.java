@@ -87,6 +87,15 @@ public class BaseScene {
         }
     }
 
+    public <E extends Enum> void remove(E layerEnum) {
+        ArrayList<IGameObject> objects = layers.get(layerEnum.ordinal());
+
+        for(IGameObject obj : objects){
+            remove(layerEnum, obj);
+        }
+
+    }
+
     public int count() {
         int count = 0;
         for (ArrayList<IGameObject> objects: layers) {
