@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void jsonParsing(String json, int song_id)
     {
         try{
-            JSONObject jsonObject = new JSONObject(json);
+            JSONObject jsonObject = new JSONObject(getJsonString("CanonRock.json"));
 
             JSONArray hitmarkArray = jsonObject.getJSONArray("HitMark");
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 objects.add(new SlideMarkData(num, color, x1, y1, x2, y2, appeared_timing, start_timing, end_timing, return_num));
             }
 
-            JSONArray spinArray = jsonObject.getJSONArray("HitMark");
+            JSONArray spinArray = jsonObject.getJSONArray("SpinMark");
 
             for(int i=0; i<spinArray.length(); i++)
             {
