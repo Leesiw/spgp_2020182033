@@ -2,7 +2,6 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -40,9 +39,9 @@ public class MainScene extends BaseScene {
     public Gauge gauge2;
     public static float gaugeValue;
 
-    private int hitmark_num;
-    private int slidemark_num;
-    private int spinmark_num;
+    private static int hitmark_num;
+    private static int slidemark_num;
+    private static int spinmark_num;
 
     public static int[] score_num = {0, 0, 0, 0}; // x, 50, 100, 300
 
@@ -53,27 +52,14 @@ public class MainScene extends BaseScene {
     }
 
     public MainScene(int song_id) {
-        for(int i = 0; i < score_num.length; ++i){
-            score_num[i] = 0;
-        }
-
         this.song_id = song_id;
-        max_combo = 0;
-
-        hitmark_num = 0;
-        slidemark_num = 0;
-        spinmark_num = 0;
-
-        song_play_time = 0.0f;
 
         initLayers(Layer.COUNT);
 
         score = new Score(Metrics.game_height - 1.f, Metrics.game_width - 0.5f, 7);
-        score.setScore(0);
         add(Layer.ui, score);
 
         combo = new Score(Metrics.game_height - 1.f, 2.f, 0);
-        combo.setScore(0);
         add(Layer.ui, combo);
 
         add(Layer.ui, new Sprite(R.mipmap.combox, 2.3f, Metrics.game_height - 0.6f, 0.4f, 0.4f));
@@ -83,6 +69,27 @@ public class MainScene extends BaseScene {
         gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
         gaugeValue = 100.f;
 
+        reset();
+
+    }
+
+    static public void reset(){
+        for(int i = 0; i < score_num.length; ++i){
+            score_num[i] = 0;
+        }
+
+        max_combo = 0;
+
+        hitmark_num = 0;
+        slidemark_num = 0;
+        spinmark_num = 0;
+
+        song_play_time = 0.0f;
+
+        gaugeValue = 100;
+
+        score.setScore(0);
+        combo.setScore(0);
     }
 
     @Override
@@ -110,7 +117,6 @@ public class MainScene extends BaseScene {
                     }
                     else{
                         spinmark_num++;
-                        Log.d("SpinMArk", "MAKEMAKE");
                         SpinMarkData markData = (SpinMarkData) mark;
                         add(Layer.spin_mark, SpinMark.get(markData));
                     }
@@ -120,6 +126,7 @@ public class MainScene extends BaseScene {
         }
 
         if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
+        //if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 5000_000f);}
         else{
             new GameOverScene().pushScene();
         }

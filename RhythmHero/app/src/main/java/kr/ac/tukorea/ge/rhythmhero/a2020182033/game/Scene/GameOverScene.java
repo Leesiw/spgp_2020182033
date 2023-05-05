@@ -45,10 +45,12 @@ public class GameOverScene extends BaseScene {
                     if(CollisionHelper.collides(gobj, x, y)) {
                         switch (gobj.getId()) {
                             case 1:
-                                new SelectScene().pushScene();
-                                //Log.d("button 1", "pressed");
+                                MainScene.reset();
+                                getTopScene().popScene();
                                 break;
                             case 2:
+                                getTopScene().popScene();
+                                getTopScene().popScene();
                                 break;
                         }
                     }
