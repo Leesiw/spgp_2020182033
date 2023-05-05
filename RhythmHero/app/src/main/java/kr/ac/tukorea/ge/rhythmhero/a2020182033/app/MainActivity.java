@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        jsonParsing("CannonRock.json", 0);
-        jsonParsing("RustyNail.json", 1);
+        jsonParsing(getJsonString("CannonRock.json"), 0);
+        jsonParsing(getJsonString("RustyNail.json"), 1);
 
         new TitleScene().pushScene();
     }
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void jsonParsing(String json, int song_id)
     {
         try{
-            JSONObject jsonObject = new JSONObject(getJsonString("CanonRock.json"));
+            JSONObject jsonObject = new JSONObject(json);
 
             JSONArray hitmarkArray = jsonObject.getJSONArray("HitMark");
 
