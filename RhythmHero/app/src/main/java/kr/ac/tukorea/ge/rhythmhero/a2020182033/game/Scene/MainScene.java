@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.app.MainActivity;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
@@ -15,8 +16,12 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.Gauge;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.HitMark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.Mark;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SlideMark;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SpinMark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SlideMarkData;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SpinMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 
 
@@ -28,9 +33,15 @@ public class MainScene extends BaseScene {
     public static Score score;
     public static Score combo;
 
+    public static int song_id;
+
     public Gauge gauge1;
     public Gauge gauge2;
     public static float gaugeValue;
+
+    private int hitmark_num;
+    private int slidemark_num;
+    private int spinmark_num;
 
     public static int[] score_num = {0, 0, 0, 0}; // x, 50, 100, 300
 
@@ -40,12 +51,17 @@ public class MainScene extends BaseScene {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
 
-    public MainScene() {
+    public MainScene(int song_id) {
         for(int i = 0; i < score_num.length; ++i){
             score_num[i] = 0;
         }
 
+        this.song_id = song_id;
         max_combo = 0;
+
+        hitmark_num = 0;
+        slidemark_num = 0;
+        spinmark_num = 0;
 
         song_play_time = 0.0f;
 
@@ -73,6 +89,29 @@ public class MainScene extends BaseScene {
     @Override
     public void update(long elapsedNanos) {
         song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
+
+        for(int i = 0; i < 3; ++i) {
+            ArrayList<Mark> objects = MainActivity.songMark.get(song_id).get(i);
+            for(int j = hitmark_num; j < MainActivity.songMark.get(song_id).get(i).size(); ++j){
+                Mark mark = objects.get(j);
+                if(mark.getAppeared_timing() <= song_play_time){
+                    if(i == 0){
+                        HitMarkData markData = (HitMarkData) mark;
+                        add(Layer.hit_mark, HitMark.get(markData));
+                    }
+                    else if(i == 1){
+                        SlideMarkData markData = (SlideMarkData) mark;
+                        add(Layer.slide_mark, SlideMark.get(markData));
+                    }
+                    else{
+                        SpinMarkData markData = (SpinMarkData) mark;
+                        add(Layer.spin_mark, SpinMark.get(markData));
+                    }
+                }
+            }
+
+        }
+
         if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
         else{
             new GameOverScene().pushScene();

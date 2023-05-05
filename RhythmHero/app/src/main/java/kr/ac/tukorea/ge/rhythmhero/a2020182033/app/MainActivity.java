@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.app;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.GameView;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.HitMark;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.Mark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SlideMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SpinMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.TitleScene;
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
         gameView = new GameView(this);
         gameView.setFullScreen();
         setContentView(gameView);
+
+        for (int i = 0; i < 2; i++) {
+            songMark.add(new ArrayList<>());
+            ArrayList<ArrayList<Mark>> objects = songMark.get(i);
+            for(int j = 0; j < 3; j++) {
+                objects.add(new ArrayList<>());
+            }
+        }
 
         jsonParsing("CannonRock.json", 0);
         jsonParsing("RustyNail.json", 1);
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 float touch_timing = (float)markObject.getDouble("touch_timing");
 
                 Mark mark = HitMark.get(num, color, x, y, appeared_timing, touch_timing);
-
+                Log.d("HitMark", "Parse");
                 ArrayList<Mark> objects = songMark.get(song_id).get(0);
 
                 objects.add(new HitMarkData(num, color, x, y, appeared_timing, touch_timing));
