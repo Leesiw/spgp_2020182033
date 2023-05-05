@@ -2,6 +2,7 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -92,18 +93,26 @@ public class MainScene extends BaseScene {
 
         for(int i = 0; i < 3; ++i) {
             ArrayList<Mark> objects = MainActivity.songMark.get(song_id).get(i);
-            for(int j = hitmark_num; j < MainActivity.songMark.get(song_id).get(i).size(); ++j){
+            int num;
+            if(i == 0){num = hitmark_num; }
+            else if (i == 1) {num = slidemark_num; }
+            else{num = spinmark_num; }
+            for(int j = num; j < MainActivity.songMark.get(song_id).get(i).size(); ++j){
                 Mark mark = objects.get(j);
                 if(mark.getAppeared_timing() <= song_play_time){
                     if(i == 0){
+                        hitmark_num++;
                         HitMarkData markData = (HitMarkData) mark;
                         add(Layer.hit_mark, HitMark.get(markData));
                     }
                     else if(i == 1){
+                        slidemark_num++;
                         SlideMarkData markData = (SlideMarkData) mark;
                         add(Layer.slide_mark, SlideMark.get(markData));
                     }
                     else{
+                        spinmark_num++;
+                        Log.d("SpinMArk", "MAKEMAKE");
                         SpinMarkData markData = (SpinMarkData) mark;
                         add(Layer.spin_mark, SpinMark.get(markData));
                     }
