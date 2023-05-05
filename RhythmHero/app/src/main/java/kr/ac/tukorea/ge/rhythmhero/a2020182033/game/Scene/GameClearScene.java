@@ -33,7 +33,7 @@ public class GameClearScene extends BaseScene {
             }
         }
         else if(num_x < 10){
-            if(num_50 < 10) {
+            if(num_50 < 30) {
                 add(Layer.bg, new Sprite(R.mipmap.rankb, 2.f, 2.f, 3.f, 3.f));
             }
             else{
@@ -41,7 +41,7 @@ public class GameClearScene extends BaseScene {
             }
         }
         else if(num_x < 30){
-            if(num_50 < 40) {
+            if(num_50 < 50) {
                 add(Layer.bg, new Sprite(R.mipmap.rankd, 2.f, 2.f, 3.f, 3.f));
             }
             else{
@@ -55,6 +55,12 @@ public class GameClearScene extends BaseScene {
         add(Layer.bg, new Sprite(R.mipmap.scoretxt, Metrics.game_width - 9.f, 1.30f, 4.f, 0.7f));
         add(Layer.bg, new Sprite(R.mipmap.maxcombotxt, Metrics.game_width - 9.f, 2.30f, 4.f, 0.7f));
 
+        add(Layer.bg, new Sprite(R.mipmap.score300, 2.f, 5.f, 1.5f, 1.5f));
+        add(Layer.bg, new Sprite(R.mipmap.score100, 2.f, 7.f, 1.5f, 1.5f));
+        add(Layer.bg, new Sprite(R.mipmap.score50, Metrics.game_width - 9.f, 5.f, 1.5f, 1.5f));
+        add(Layer.bg, new Sprite(R.mipmap.scorex, Metrics.game_width - 9.f, 7.f, 1.5f, 1.5f));
+
+
 
         Score score1 = new Score(1.f, Metrics.game_width - 3.f, 7);
         score1.setScore(score);
@@ -63,6 +69,22 @@ public class GameClearScene extends BaseScene {
         Score combo = new Score(2.f, Metrics.game_width - 3.f, 3);
         combo.setScore(max_combo);
         add(Layer.bg, combo);
+
+        Score score300 = new Score(4.75f, 4.5f, 3);
+        score300.setScore(num_300);
+        add(Layer.bg, score300);
+
+        Score score100 = new Score(6.75f, 4.5f, 3);
+        score100.setScore(num_100);
+        add(Layer.bg, score100);
+
+        Score score50 = new Score(4.75f, Metrics.game_width - 6.5f, 3);
+        score50.setScore(num_50);
+        add(Layer.bg, score50);
+
+        Score scorex = new Score(6.75f, Metrics.game_width - 6.5f, 3);
+        scorex.setScore(num_x);
+        add(Layer.bg, scorex);
 
 
         //add(Layer.bg, new Sprite(R.mipmap.restart, Metrics.game_width / 2, Metrics.game_height / 2 - 1.f, 4.f, 1.f));
