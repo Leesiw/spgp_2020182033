@@ -186,8 +186,15 @@ public class SlideMark extends Mark implements IRecyclable {
                 if(num < 8) {
                     if (isTouching && CollisionHelper.collides(ball, cur_x, cur_y)) {
                         score += 30;
+                        MainScene.combo.add(1);
+                        if (MainScene.combo.getScore() > MainScene.max_combo) {
+                            MainScene.max_combo = MainScene.combo.getScore();
+                        }
                         MainScene.gaugeValue += 1;
                         MainScene.score.add(30);
+                    }
+                    else{
+                        MainScene.combo.setScore(0);
                     }
                 }
                num++;

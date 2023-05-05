@@ -28,15 +28,25 @@ public class MainScene extends BaseScene {
     public static Score score;
     public static Score combo;
 
-    public static Gauge gauge1;
-    public static Gauge gauge2;
+    public Gauge gauge1;
+    public Gauge gauge2;
     public static float gaugeValue;
+
+    public static int[] score_num = {0, 0, 0, 0}; // x, 50, 100, 300
+
+    public static int max_combo;
 
     public enum Layer {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
 
     public MainScene() {
+        for(int i = 0; i < score_num.length; ++i){
+            score_num[i] = 0;
+        }
+
+        max_combo = 0;
+
         song_play_time = 0.0f;
 
         initLayers(Layer.COUNT);

@@ -34,6 +34,17 @@ public class ScoreMark extends Sprite implements IRecyclable {
             mark = new ScoreMark();
         }
         MainScene.gaugeValue += score;
+
+        MainScene.score_num[score] += 1;
+        if(score >= 2) {
+            MainScene.combo.add(1);
+            if (MainScene.combo.getScore() > MainScene.max_combo) {
+                MainScene.max_combo = MainScene.combo.getScore();
+            }
+        }
+        else{
+            MainScene.combo.setScore(0);
+        }
         mark.init(x, y, score);
         return mark;
     }
