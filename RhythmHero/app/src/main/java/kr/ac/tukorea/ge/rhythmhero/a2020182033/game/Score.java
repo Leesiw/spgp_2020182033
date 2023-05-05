@@ -22,7 +22,7 @@ public class Score implements IGameObject {
     public Score() {
         this.bitmap = BitmapPool.get(R.mipmap.number_24x32);
         this.right = Metrics.game_width - 0.5f;
-        this.top = 0.5f;
+        this.top = 8.f;
         this.dstCharWidth = 0.6f;
         this.srcCharWidth = bitmap.getWidth() / 10;
         this.srcCharHeight = bitmap.getHeight();
