@@ -182,11 +182,11 @@ public class SlideMark extends Mark implements IRecyclable {
         }
 
         if(MainScene.song_play_time > start_timing) {
-            if(full_time / 25 * (num + 1) < MainScene.song_play_time - start_timing){
-                if(num < 24) {
+            if(full_time / 9 * (num + 1) < MainScene.song_play_time - start_timing){
+                if(num < 8) {
                     if (isTouching && CollisionHelper.collides(ball, cur_x, cur_y)) {
-                        score += 10;
-                        MainScene.score.add(10);
+                        score += 30;
+                        MainScene.score.add(30);
                     }
                 }
                num++;
