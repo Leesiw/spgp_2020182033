@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.GameView;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.TitleScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.TitleScene;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidab
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class Ball extends Sprite implements IBoxCollidable {
     private static final float SIZE = 1.f;

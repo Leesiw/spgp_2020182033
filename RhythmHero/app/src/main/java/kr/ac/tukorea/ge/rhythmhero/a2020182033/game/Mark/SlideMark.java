@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
+package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +11,8 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Ball;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class SlideMark extends Mark implements IRecyclable {
 

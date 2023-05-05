@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
+package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class ScoreMark extends Sprite implements IRecyclable {
     public static final float SIZE = 1.0f;

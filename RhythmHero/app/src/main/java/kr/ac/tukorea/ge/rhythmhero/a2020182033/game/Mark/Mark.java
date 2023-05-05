@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
+package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark;
 
 import android.graphics.Canvas;
 

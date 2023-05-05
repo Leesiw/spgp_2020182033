@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.rhythmhero.a2020182033.game;
+package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
 import android.view.MotionEvent;
@@ -10,6 +10,10 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.HitMark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SlideMark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SpinMark;
 
 
 public class MainScene extends BaseScene {
