@@ -11,6 +11,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Button;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 
 public class GameClearScene extends BaseScene {
     private static final String TAG = GameClearScene.class.getSimpleName();
@@ -22,9 +23,51 @@ public class GameClearScene extends BaseScene {
     public GameClearScene(int score, int num_300, int num_100, int num_50, int num_x, int max_combo) {
         initLayers(SelectScene.Layer.COUNT);
         add(Layer.bg, new Sprite(R.mipmap.clearescenebg, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
+
+        if(num_x == 0) {
+            if(num_50 == 0) {
+                add(Layer.bg, new Sprite(R.mipmap.ranks, 2.f, 2.f, 3.f, 3.f));
+            }
+            else{
+                add(Layer.bg, new Sprite(R.mipmap.ranka, 2.f, 2.f, 3.f, 3.f));
+            }
+        }
+        else if(num_x < 10){
+            if(num_50 < 10) {
+                add(Layer.bg, new Sprite(R.mipmap.rankb, 2.f, 2.f, 3.f, 3.f));
+            }
+            else{
+                add(Layer.bg, new Sprite(R.mipmap.rankc, 2.f, 2.f, 3.f, 3.f));
+            }
+        }
+        else if(num_x < 30){
+            if(num_50 < 40) {
+                add(Layer.bg, new Sprite(R.mipmap.rankd, 2.f, 2.f, 3.f, 3.f));
+            }
+            else{
+                add(Layer.bg, new Sprite(R.mipmap.ranke, 2.f, 2.f, 3.f, 3.f));
+            }
+        }
+        else{
+            add(Layer.bg, new Sprite(R.mipmap.rankf, 2.f, 2.f, 3.f, 3.f));
+        }
+
+        add(Layer.bg, new Sprite(R.mipmap.scoretxt, Metrics.game_width - 9.f, 1.30f, 4.f, 0.7f));
+        add(Layer.bg, new Sprite(R.mipmap.maxcombotxt, Metrics.game_width - 9.f, 2.30f, 4.f, 0.7f));
+
+
+        Score score1 = new Score(1.f, Metrics.game_width - 3.f, 7);
+        score1.setScore(score);
+        add(Layer.bg, score1);
+
+        Score combo = new Score(2.f, Metrics.game_width - 3.f, 3);
+        combo.setScore(max_combo);
+        add(Layer.bg, combo);
+
+
         //add(Layer.bg, new Sprite(R.mipmap.restart, Metrics.game_width / 2, Metrics.game_height / 2 - 1.f, 4.f, 1.f));
-        add(Layer.button, new Button(R.mipmap.yes, Metrics.game_width / 2 - 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,1));
-        add(Layer.button, new Button(R.mipmap.no, Metrics.game_width / 2 + 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,2));
+        add(Layer.button, new Button(R.mipmap.prev, 1.f, Metrics.game_height - 1.f, 1.f, 1.f,1));
+        add(Layer.button, new Button(R.mipmap.next, Metrics.game_width - 1.f, Metrics.game_height - 1.f, 1.f, 1.f,2));
     }
 
     @Override
@@ -45,8 +88,12 @@ public class GameClearScene extends BaseScene {
                     if(CollisionHelper.collides(gobj, x, y)) {
                         switch (gobj.getId()) {
                             case 1:
+                                MainScene.reset();
+                                getTopScene().popScene();
                                 break;
                             case 2:
+                                getTopScene().popScene();
+                                getTopScene().popScene();
                                 break;
                         }
                     }
