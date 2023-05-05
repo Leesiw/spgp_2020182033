@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.GameView;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.GameOverScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.TitleScene;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         gameView.setFullScreen();
         setContentView(gameView);
 
-        new GameOverScene().pushScene();
+        new TitleScene().pushScene();
     }
 
     @Override

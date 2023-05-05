@@ -13,13 +13,13 @@ public class AnimSprite extends Sprite {
     protected float fps;
     protected long createdOn;
     protected int frameWidth, frameHeight;
-    public AnimSprite(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameCount) {
+    public AnimSprite(int bitmapResId, float cx, float cy, float width, float height, float fps, int frameWidth, int frameCount) {
         super(bitmapResId, cx, cy, width, height);
         this.fps = fps;
         int imageWidth = bitmap.getWidth();
         frameHeight = bitmap.getHeight();
         if (frameCount == 0) {
-            frameWidth = frameHeight;
+            this.frameWidth = frameWidth;
             this.frameCount = imageWidth / frameHeight;
         } else {
             frameWidth = imageWidth / frameCount;
