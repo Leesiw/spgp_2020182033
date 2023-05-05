@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 
 public class SelectScene extends BaseScene {
@@ -39,13 +40,20 @@ public class SelectScene extends BaseScene {
                 ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(SelectScene.Layer.button);
                 for (int i = buttons.size() - 1; i >= 0; i--) {
                     Button gobj = (Button) buttons.get(i);
-                    switch(gobj.getId()){
-                        case 1:
-                            break;
-                        case 2:
-                            break;
+                    //Log.d("button pressed", "id " + gobj.getId());
+
+                    if(CollisionHelper.collides(gobj, x, y)) {
+
+                        switch (gobj.getId()) {
+                            case 1:
+                                new MainScene().pushScene();
+                                break;
+                            case 2:
+                                new MainScene().pushScene();
+                                break;
+                        }
                     }
-                    return true;
+
                 }
                 return true;
             }

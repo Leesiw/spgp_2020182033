@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 
 public class GameOverScene extends BaseScene {
@@ -37,16 +38,19 @@ public class GameOverScene extends BaseScene {
             case MotionEvent.ACTION_DOWN: {
                 float x = Metrics.toGameX(event.getX());
                 float y = Metrics.toGameY(event.getY());
-                ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(SelectScene.Layer.button);
+                ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(GameOverScene.Layer.button);
                 for (int i = buttons.size() - 1; i >= 0; i--) {
                     Button gobj = (Button) buttons.get(i);
-                    switch(gobj.getId()){
-                        case 1:
-                            break;
-                        case 2:
-                            break;
+                    if(CollisionHelper.collides(gobj, x, y)) {
+                        switch (gobj.getId()) {
+                            case 1:
+                                new SelectScene().pushScene();
+                                //Log.d("button 1", "pressed");
+                                break;
+                            case 2:
+                                break;
+                        }
                     }
-                    return true;
                 }
                 return true;
             }
