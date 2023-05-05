@@ -8,7 +8,6 @@ import android.graphics.RectF;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.BitmapPool;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 
 public class Score implements IGameObject {
     private final Bitmap bitmap;
@@ -19,11 +18,11 @@ public class Score implements IGameObject {
     private RectF dstRect = new RectF();
     private int score, displayScore;
 
-    public Score() {
+    public Score(float top, float right) {
         this.bitmap = BitmapPool.get(R.mipmap.number_24x32);
-        this.right = Metrics.game_width - 0.5f;
-        this.top = 8.f;
-        this.dstCharWidth = 0.6f;
+        this.right = right;
+        this.top = top;
+        this.dstCharWidth = 0.5f;
         this.srcCharWidth = bitmap.getWidth() / 10;
         this.srcCharHeight = bitmap.getHeight();
         this.dstCharHeight = dstCharWidth * srcCharHeight / srcCharWidth;
@@ -31,6 +30,7 @@ public class Score implements IGameObject {
 
     public void setScore(int score) {
         this.score = score;
+        this.displayScore = score;
     }
     public int getScore() {
         return score;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.Gauge;
@@ -25,6 +26,7 @@ public class MainScene extends BaseScene {
     public static float song_play_time;
 
     public static Score score;
+    public static Score combo;
 
     public Gauge gauge1;
     public Gauge gauge2;
@@ -41,9 +43,16 @@ public class MainScene extends BaseScene {
         //add(Layer.hit_mark, HitMark.get(1, 1, 5.f, 5.f, 0.f, 5.f));
         add(Layer.slide_mark, SlideMark.get(1, 1, 1.1f, 1.1f, 3.3f, 3.3f, 1.f, 3.f, 6.f, 3));
         //add(Layer.spin_mark, SpinMark.get(0.f, 12.f));
-        score = new Score();
+        score = new Score(Metrics.game_height - 1.f, Metrics.game_width - 0.5f);
         score.setScore(0);
         add(Layer.ui, score);
+
+        combo = new Score(Metrics.game_height - 1.f, 2.f);
+        combo.setScore(0);
+        add(Layer.ui, combo);
+
+        add(Layer.ui, new Sprite(R.mipmap.combox, 2.3f, Metrics.game_height - 0.6f, 0.4f, 0.4f));
+        add(Layer.ui, new Sprite(R.mipmap.scoretxt, 10.3f, Metrics.game_height - 0.65f, 3.f, 0.6f));
 
         gauge1 = new Gauge(0.8f, R.color.pink, R.color.black, 1.f, 0.5f, 7.f);
         gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
