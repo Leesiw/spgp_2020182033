@@ -28,9 +28,9 @@ public class MainScene extends BaseScene {
     public static Score score;
     public static Score combo;
 
-    public Gauge gauge1;
-    public Gauge gauge2;
-    public float gaugeValue;
+    public static Gauge gauge1;
+    public static Gauge gauge2;
+    public static float gaugeValue;
 
     public enum Layer {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
@@ -43,11 +43,11 @@ public class MainScene extends BaseScene {
         //add(Layer.hit_mark, HitMark.get(1, 1, 5.f, 5.f, 0.f, 5.f));
         add(Layer.slide_mark, SlideMark.get(1, 1, 1.1f, 1.1f, 3.3f, 3.3f, 1.f, 3.f, 6.f, 3));
         //add(Layer.spin_mark, SpinMark.get(0.f, 12.f));
-        score = new Score(Metrics.game_height - 1.f, Metrics.game_width - 0.5f);
+        score = new Score(Metrics.game_height - 1.f, Metrics.game_width - 0.5f, 7);
         score.setScore(0);
         add(Layer.ui, score);
 
-        combo = new Score(Metrics.game_height - 1.f, 2.f);
+        combo = new Score(Metrics.game_height - 1.f, 2.f, 0);
         combo.setScore(0);
         add(Layer.ui, combo);
 
@@ -64,6 +64,9 @@ public class MainScene extends BaseScene {
     public void update(long elapsedNanos) {
         song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
         if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
+        else{
+            new GameOverScene().pushScene();
+        }
         super.update(elapsedNanos);
     }
 

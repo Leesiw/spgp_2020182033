@@ -15,13 +15,16 @@ public class Score implements IGameObject {
     private final float right, top;
     private final float dstCharWidth, dstCharHeight;
     private Rect srcRect = new Rect();
+
+    private int num;
     private RectF dstRect = new RectF();
     private int score, displayScore;
 
-    public Score(float top, float right) {
+    public Score(float top, float right, int num) {
         this.bitmap = BitmapPool.get(R.mipmap.number_24x32);
         this.right = right;
         this.top = top;
+        this.num = num;
         this.dstCharWidth = 0.5f;
         this.srcCharWidth = bitmap.getWidth() / 10;
         this.srcCharHeight = bitmap.getHeight();
@@ -54,7 +57,10 @@ public class Score implements IGameObject {
         int value = this.displayScore;
         float x = right;
 
+        int loop_num = 0;
+
         while (value >= 0) {
+            ++loop_num;
             if(value == 0 && this.displayScore != 0){return;}
             int digit = value % 10;
             srcRect.set(digit * srcCharWidth, 0, (digit + 1) * srcCharWidth, srcCharHeight);
@@ -66,7 +72,9 @@ public class Score implements IGameObject {
                 value /= 10;
             }
             else{
-                return;
+                if(loop_num >= num) {
+                    return;
+                }
             }
         }
     }
