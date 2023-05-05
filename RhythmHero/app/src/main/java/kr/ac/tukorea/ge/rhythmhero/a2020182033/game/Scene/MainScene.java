@@ -30,6 +30,7 @@ public class MainScene extends BaseScene {
 
     public static float song_play_time;
 
+    private float song_end_time;
     public static Score score;
     public static Score combo;
 
@@ -69,6 +70,8 @@ public class MainScene extends BaseScene {
         gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
         gaugeValue = 100.f;
 
+        song_end_time = 20; // 이후 노래 전체 길이로 변경
+        
         reset();
 
     }
@@ -134,6 +137,10 @@ public class MainScene extends BaseScene {
             remove(Layer.slide_mark);
             remove(Layer.spin_mark);
             new GameOverScene().pushScene();
+        }
+
+        if(song_play_time > song_end_time){
+            new GameClearScene(score.getScore(), score_num[3], score_num[2], score_num[1], score_num[0],max_combo).pushScene();
         }
         super.update(elapsedNanos);
     }
