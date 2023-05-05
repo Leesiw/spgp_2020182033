@@ -47,10 +47,10 @@ public class SelectScene extends BaseScene {
 
                         switch (gobj.getId()) {
                             case 1:
-                                new MainScene().pushScene();
+                                new MainScene(0).pushScene();
                                 break;
                             case 2:
-                                new MainScene().pushScene();
+                                new MainScene(1).pushScene();
                                 break;
                         }
                     }
