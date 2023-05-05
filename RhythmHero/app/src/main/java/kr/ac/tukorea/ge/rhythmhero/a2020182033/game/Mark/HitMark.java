@@ -11,6 +11,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
@@ -70,6 +71,15 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
             mark = new HitMark();
         }
         mark.init(num, color, x, y, appeared_timing, touch_timing);
+        return mark;
+    }
+
+    public static HitMark get(HitMarkData data) {
+        HitMark mark = (HitMark) RecycleBin.get(HitMark.class);
+        if (mark == null) {
+            mark = new HitMark();
+        }
+        mark.init(data.getNum(), data.getColor(), data.getX(), data.getY(), data.appeared_timing, data.getTouch_timing());
         return mark;
     }
 

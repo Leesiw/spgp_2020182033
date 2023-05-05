@@ -12,6 +12,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Ball;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SlideMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class SlideMark extends Mark implements IRecyclable {
@@ -62,6 +63,16 @@ public class SlideMark extends Mark implements IRecyclable {
         whitePaint.setAntiAlias(true);
         //whitePaint.setColor(Color.WHITE);
         whitePaint.setStrokeWidth(0.1f);
+    }
+
+    public static SlideMark get(SlideMarkData data) {
+        SlideMark mark = (SlideMark) RecycleBin.get(SlideMark.class);
+        if (mark == null) {
+            mark = new SlideMark();
+        }
+        mark.init(data.getNum(), data.getColor(), data.getX1(), data.getY1(), data.getX2(), data.getY2(), data.appeared_timing,
+                data.getStart_timing(), data.getEnd_timing(), data.getReturn_num());
+        return mark;
     }
 
     public static SlideMark get(int num, int color, float x1, float y1, float x2, float y2,

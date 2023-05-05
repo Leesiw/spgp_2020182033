@@ -12,6 +12,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.GameView;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SpinMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene.MainScene;
 
 public class SpinMark extends Mark implements IRecyclable{
@@ -43,6 +44,15 @@ public class SpinMark extends Mark implements IRecyclable{
         fgPaint.setStrokeWidth(0.5f);
         fgPaint.setColor(ResourcesCompat.getColor(GameView.res, R.color.mark_purple, null));
         fgPaint.setStrokeCap(Paint.Cap.ROUND);
+    }
+
+    public static SpinMark get(SpinMarkData data) {
+        SpinMark mark = (SpinMark) RecycleBin.get(SpinMark.class);
+        if (mark == null) {
+            mark = new SpinMark();
+        }
+        mark.init(data.appeared_timing, data.getEnd_timing());
+        return mark;
     }
 
     public static SpinMark get(float appeared_timing, float end_timing) {
