@@ -1,19 +1,22 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
+import android.graphics.Canvas;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.Gauge;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.HitMark;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SlideMark;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.SpinMark;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 
 
 public class MainScene extends BaseScene {
@@ -22,6 +25,11 @@ public class MainScene extends BaseScene {
     public static float song_play_time;
 
     public static Score score;
+
+    public Gauge gauge1;
+    public Gauge gauge2;
+    public float gaugeValue;
+
     public enum Layer {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
@@ -36,12 +44,35 @@ public class MainScene extends BaseScene {
         score = new Score();
         score.setScore(0);
         add(Layer.ui, score);
+
+        gauge1 = new Gauge(0.8f, R.color.pink, R.color.black, 1.f, 0.5f, 7.f);
+        gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
+        gaugeValue = 100.f;
+
     }
 
     @Override
     public void update(long elapsedNanos) {
         song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
+        if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
         super.update(elapsedNanos);
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if(gaugeValue > 50) {
+             gauge1.draw(canvas, 1.f);
+             gauge2.draw(canvas, (gaugeValue - 50.f) / 50.f);
+        }
+        else{
+            gauge1.draw(canvas, gaugeValue / 50.f);
+            gauge2.draw(canvas, 0.f);
+        }
+        super.draw(canvas);
+
+
+        //song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
+        //super.update(elapsedNanos);
     }
 
     @Override
