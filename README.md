@@ -110,3 +110,19 @@
 -게이지가 0이 되면 게임 오버씬으로 넘어간다
 
 ![gauge](https://user-images.githubusercontent.com/84753357/236692975-51789928-8441-464b-b85b-9da4a2cc6093.gif)
+
+#### JSON
+
+-앱 실행 시 MainActivity가 실행되며 JSON 파싱을 시작한다.
+
+-마크를 생성할 때 필요한 데이터들만 담아놓은 배열을 static으로 선언해 두어 JSON 파싱 시 해당 배열에 마크 데이터를 넣어준다. 곡이 2곡 뿐이라 앱 실행 시 모든 곡의 데이터를 가져오도록 했다.
+
+-이때 배열은 3중 배열로 설정해 곡의 id와 mark의 종류를 구분해 담아 두었다. (array[곡의id][hitmark] = 해당 곡의 hitmark 데이터들)
+
+![jsonhitmark](https://github.com/Leesiw/spgp_2020182033/assets/84753357/2efdbe50-badc-452f-9b35-e40b61b41b5a)
+
+-MainScene 실행 시 업데이트 부분에서 위의 마크 데이터 배열을 사용한다.
+
+![update](https://github.com/Leesiw/spgp_2020182033/assets/84753357/89639c72-79a7-4b56-a5e0-20e028ba29f9)
+
+-모든 JSON 파일이 빨리 등장하는 순으로 작성되어 있다고 가정해 현재까지 등장하지 않은 마크들의 생성 시간과 현재 시간을 비교해 작거나 같다면 마크를 생성/재사용 하고 크다면 해당 배열은 탐색 종료하게 하였다.
