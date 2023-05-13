@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         BaseScene.popAll();
+        GameView.clear();
         super.onDestroy();
     }
 

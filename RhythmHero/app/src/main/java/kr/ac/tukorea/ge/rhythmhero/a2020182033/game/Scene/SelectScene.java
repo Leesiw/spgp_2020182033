@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.Sound;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
@@ -64,6 +65,16 @@ public class SelectScene extends BaseScene {
             }
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onStart() {
+        Sound.playMusic(R.raw.selectbgm);
+    }
+
+    @Override
+    protected void onEnd() {
+        Sound.stopMusic();
     }
 }
 
