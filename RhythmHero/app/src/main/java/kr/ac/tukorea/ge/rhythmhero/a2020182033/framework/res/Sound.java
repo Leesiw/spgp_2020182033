@@ -34,6 +34,14 @@ public class Sound {
         mediaPlayer.start();
     }
 
+    public static int getDuration(){
+        return mediaPlayer.getDuration();
+    }
+
+    public static int getCurPosition(){
+        return mediaPlayer.getCurrentPosition();
+    }
+
     private static HashMap<Integer, Integer> soundIdMap = new HashMap<>();
     public static void playEffect(int resId) {
         SoundPool pool = getSoundPool();

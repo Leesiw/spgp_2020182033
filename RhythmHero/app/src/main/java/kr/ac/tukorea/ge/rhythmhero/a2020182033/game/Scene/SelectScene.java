@@ -49,12 +49,13 @@ public class SelectScene extends BaseScene {
                     //Log.d("button pressed", "id " + gobj.getId());
 
                     if(CollisionHelper.collides(gobj, x, y)) {
-
                         switch (gobj.getId()) {
                             case 1:
+                                Sound.stopMusic();
                                 new MainScene(this.context,0).pushScene();
                                 break;
                             case 2:
+                                Sound.stopMusic();
                                 new MainScene(this.context,1).pushScene();
                                 break;
                         }

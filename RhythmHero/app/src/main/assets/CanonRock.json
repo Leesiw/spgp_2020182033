@@ -5,24 +5,24 @@
       "color": 0,
       "x": 4.0,
       "y": 5.0,
-      "appeared_timing": 1.0,
-      "touch_timing": 3.0
+      "appeared_timing": 1000,
+      "touch_timing": 3000
     },
     {
       "num": 2,
       "color": 0,
       "x": 8.0,
       "y": 3.0,
-      "appeared_timing": 1.0,
-      "touch_timing": 3.5
+      "appeared_timing": 1000,
+      "touch_timing": 3500
     },
     {
       "num": 3,
       "color": 0,
       "x": 12.0,
       "y": 3.0,
-      "appeared_timing": 1.0,
-      "touch_timing": 4.0
+      "appeared_timing": 1000,
+      "touch_timing": 4000
     }
   ],
   "SlideMark": [
@@ -33,9 +33,9 @@
       "y1": 6.0,
       "x2": 12.0,
       "y2": 6.0,
-      "appeared_timing": 2.5,
-      "start_timing": 4.5,
-      "end_timing": 8.5,
+      "appeared_timing": 2500,
+      "start_timing": 4500,
+      "end_timing": 8500,
       "return_num": 0
     },
     {
@@ -45,9 +45,9 @@
       "y1": 4.0,
       "x2": 11.0,
       "y2": 4.0,
-      "appeared_timing": 15.0,
-      "start_timing": 17.5,
-      "end_timing": 25.5,
+      "appeared_timing": 15000,
+      "start_timing": 17500,
+      "end_timing": 25500,
       "return_num": 1
 
     }
@@ -55,8 +55,8 @@
 
   "SpinMark": [
     {
-      "appeared_timing": 8.5,
-      "end_timing": 15
+      "appeared_timing": 8500,
+      "end_timing": 15000
     }
   ]
 }

@@ -46,7 +46,7 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
     };
 
     public static final float SIZE = 1.0f;
-    private static final float TIME_SIZE = 0.5f;
+    private static final float TIME_SIZE = 0.0005f;
     public static final float RADIUS = SIZE / 2;
     protected RectF collisionRect = new RectF();
 

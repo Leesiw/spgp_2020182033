@@ -3,7 +3,6 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.media.MediaPlayer;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -13,6 +12,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.app.MainActivity;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.Sound;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.Gauge;
@@ -74,10 +74,9 @@ public class MainScene extends BaseScene {
         
         reset();
 
-        MediaPlayer meidaplay = MediaPlayer.create(context, R.raw.canonrock);
-        meidaplay.start();
+        Sound.playMusic(R.raw.canonrock);
 
-        song_end_time = meidaplay.getDuration(); // 노래 전체 길이
+        song_end_time = Sound.getDuration(); // 노래 전체 길이
     }
 
     static public void reset(){
@@ -101,7 +100,8 @@ public class MainScene extends BaseScene {
 
     @Override
     public void update(long elapsedNanos) {
-        song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
+        //song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
+        song_play_time = Sound.getCurPosition();
 
         for(int i = 0; i < 3; ++i) {
             ArrayList<Mark> objects = MainActivity.songMark.get(song_id).get(i);
