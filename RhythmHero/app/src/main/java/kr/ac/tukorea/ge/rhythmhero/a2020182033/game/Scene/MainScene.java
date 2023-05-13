@@ -1,7 +1,9 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
+import android.content.Context;
 import android.graphics.Canvas;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -52,7 +54,7 @@ public class MainScene extends BaseScene {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
 
-    public MainScene(int song_id) {
+    public MainScene(Context context, int song_id) {
         this.song_id = song_id;
 
         initLayers(Layer.COUNT);
@@ -69,11 +71,13 @@ public class MainScene extends BaseScene {
         gauge1 = new Gauge(0.8f, R.color.pink, R.color.black, 1.f, 0.5f, 7.f);
         gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
         gaugeValue = 100.f;
-
-        song_end_time = 20; // 이후 노래 전체 길이로 변경
         
         reset();
 
+        MediaPlayer meidaplay = MediaPlayer.create(context, R.raw.canonrock);
+        meidaplay.start();
+
+        song_end_time = meidaplay.getDuration(); // 노래 전체 길이
     }
 
     static public void reset(){
@@ -105,7 +109,7 @@ public class MainScene extends BaseScene {
             if(i == 0){num = hitmark_num; }
             else if (i == 1) {num = slidemark_num; }
             else{num = spinmark_num; }
-            for(int j = num; j < MainActivity.songMark.get(song_id).get(i).size(); ++j){
+            for(int j = num; j < objects.size(); ++j){
                 Mark mark = objects.get(j);
                 if(mark.getAppeared_timing() <= song_play_time){
                     if(i == 0){
@@ -123,6 +127,9 @@ public class MainScene extends BaseScene {
                         SpinMarkData markData = (SpinMarkData) mark;
                         add(Layer.spin_mark, SpinMark.get(markData));
                     }
+                }
+                else{
+                    break;
                 }
             }
 

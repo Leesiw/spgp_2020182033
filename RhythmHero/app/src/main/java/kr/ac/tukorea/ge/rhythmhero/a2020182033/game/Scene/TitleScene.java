@@ -1,5 +1,6 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
+import android.content.Context;
 import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
@@ -15,7 +16,10 @@ public class TitleScene extends BaseScene {
         bg, COUNT
     }
 
-    public TitleScene() {
+    Context context;
+
+    public TitleScene(Context context) {
+        this.context = context;
         initLayers(TitleScene.Layer.COUNT);
         add(TitleScene.Layer.bg, new AnimSprite(R.mipmap.rythm, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height, 10, 500, 0));
         add(TitleScene.Layer.bg, new Sprite(R.mipmap.rhythmherotxt, Metrics.game_width / 2, Metrics.game_height / 2, 10.f, 2.f));
@@ -32,7 +36,7 @@ public class TitleScene extends BaseScene {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                new SelectScene().pushScene();
+                new SelectScene(context).pushScene();
                 return true;
             }
         }

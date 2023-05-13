@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         jsonParsing(getJsonString("CanonRock.json"), 0);
         jsonParsing(getJsonString("RustyNail.json"), 1);
 
-        new TitleScene().pushScene();
+        new TitleScene(MainActivity.this).pushScene();
     }
 
     @Override
