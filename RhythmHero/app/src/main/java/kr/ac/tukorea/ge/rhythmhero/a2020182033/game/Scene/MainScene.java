@@ -100,8 +100,8 @@ public class MainScene extends BaseScene {
 
     @Override
     public void update(long elapsedNanos) {
-        song_play_time += elapsedNanos / 1_000_000;//_000f; // 이후 곡 재생 시간으로 변경
-        //song_play_time = Sound.getCurPosition();
+        //song_play_time += elapsedNanos / 1_000_000;//_000f; // 이후 곡 재생 시간으로 변경
+        song_play_time = Sound.getCurPosition();
 
         ArrayList<Mark> objects = MainActivity.songMark.get(song_id);
         int num = hitmark_num;

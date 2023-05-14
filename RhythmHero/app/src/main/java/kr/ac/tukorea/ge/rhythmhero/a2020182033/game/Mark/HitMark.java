@@ -122,15 +122,15 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
     public void isTouched(){
         float touched_time = Math.abs(touch_timing - MainScene.song_play_time);
 
-        if (touched_time > 1.f) {
+        if (touched_time > 1000) {
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 0));
             MainScene.score.add(0);
         }
-        else if(touched_time > 0.5f){
+        else if(touched_time > 500f){
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 1));
             MainScene.score.add(50);
         }
-        else if(touched_time > 0.2f){
+        else if(touched_time > 200f){
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 2));
             MainScene.score.add(100);
         }
@@ -144,13 +144,13 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
     public int isTouchedInSlide(){
         float touched_time = Math.abs(touch_timing - MainScene.song_play_time);
 
-        if (touched_time > 1.f) {
+        if (touched_time > 1000) {
             return 0;
         }
-        else if(touched_time > 0.5f){
+        else if(touched_time > 500){
             return 5;
         }
-        else if(touched_time > 0.2f){
+        else if(touched_time > 200){
             return 10;
         }
         else{
