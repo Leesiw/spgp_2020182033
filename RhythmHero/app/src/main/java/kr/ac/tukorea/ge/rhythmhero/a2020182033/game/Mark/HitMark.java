@@ -9,6 +9,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.Sound;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
@@ -121,6 +122,8 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
 
     public void isTouched(){
         float touched_time = Math.abs(touch_timing - MainScene.song_play_time);
+
+        Sound.playEffect(R.raw.cymbal);
 
         if (touched_time > 1000) {
             BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(x, y, 0));

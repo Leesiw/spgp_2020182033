@@ -53,7 +53,7 @@ public class Sound {
             soundIdMap.put(resId, soundId);
         }
         // int streamId =
-        pool.play(soundId, 1f, 1f, 1, 0, 1f);
+        pool.play(soundId, 0.3f, 0.3f, 1, 0, 1f);
     }
 
     private static SoundPool getSoundPool() {
