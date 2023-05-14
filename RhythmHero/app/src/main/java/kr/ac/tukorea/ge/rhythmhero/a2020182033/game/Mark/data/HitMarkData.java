@@ -31,13 +31,14 @@ public class HitMarkData extends Mark {
     protected float y;
     protected float touch_timing;
 
-    public HitMarkData(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
+    public HitMarkData(int num, int color, float x, float y, int appeared_timing, float touch_timing) {
         super(appeared_timing);
         this.num = num;
         this.color = color;
         this.x = x;
         this.y = y;
         this.touch_timing = touch_timing;
+        this.type = 0;
     }
 
     @Override

@@ -11,9 +11,10 @@ public class SpinMarkData extends Mark {
 
     protected float end_timing;
 
-    public SpinMarkData(float appeared_timing, float end_timing) {
+    public SpinMarkData(int appeared_timing, float end_timing) {
         super(appeared_timing);
         this.end_timing = end_timing;
+        this.type = 2;
     }
 
     @Override

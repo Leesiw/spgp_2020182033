@@ -76,7 +76,7 @@ public class SlideMark extends Mark implements IRecyclable {
     }
 
     public static SlideMark get(int num, int color, float x1, float y1, float x2, float y2,
-                                float appeared_timing, float start_timing, float end_timing, int return_num) {
+                                int appeared_timing, float start_timing, float end_timing, int return_num) {
         SlideMark mark = (SlideMark) RecycleBin.get(SlideMark.class);
         if (mark == null) {
             mark = new SlideMark();
@@ -86,7 +86,7 @@ public class SlideMark extends Mark implements IRecyclable {
     }
 
     private void init(int num, int color, float x1, float y1, float x2, float y2,
-                      float appeared_timing, float start_timing, float end_timing, int return_num) {
+                      int appeared_timing, float start_timing, float end_timing, int return_num) {
         this.appeared_timing = appeared_timing;
         this.color = color;
         this.end_timing = end_timing;

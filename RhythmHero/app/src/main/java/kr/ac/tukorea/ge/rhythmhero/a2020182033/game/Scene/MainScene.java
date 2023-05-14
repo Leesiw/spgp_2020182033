@@ -100,39 +100,35 @@ public class MainScene extends BaseScene {
 
     @Override
     public void update(long elapsedNanos) {
-        //song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
-        song_play_time = Sound.getCurPosition();
+        song_play_time += elapsedNanos / 1_000_000;//_000f; // 이후 곡 재생 시간으로 변경
+        //song_play_time = Sound.getCurPosition();
 
-        for(int i = 0; i < 3; ++i) {
-            ArrayList<Mark> objects = MainActivity.songMark.get(song_id).get(i);
-            int num;
-            if(i == 0){num = hitmark_num; }
-            else if (i == 1) {num = slidemark_num; }
-            else{num = spinmark_num; }
-            for(int j = num; j < objects.size(); ++j){
-                Mark mark = objects.get(j);
-                if(mark.getAppeared_timing() <= song_play_time){
-                    if(i == 0){
-                        hitmark_num++;
-                        HitMarkData markData = (HitMarkData) mark;
-                        add(Layer.hit_mark, HitMark.get(markData));
-                    }
-                    else if(i == 1){
-                        slidemark_num++;
-                        SlideMarkData markData = (SlideMarkData) mark;
-                        add(Layer.slide_mark, SlideMark.get(markData));
-                    }
-                    else{
-                        spinmark_num++;
-                        SpinMarkData markData = (SpinMarkData) mark;
-                        add(Layer.spin_mark, SpinMark.get(markData));
-                    }
+        ArrayList<Mark> objects = MainActivity.songMark.get(song_id);
+        int num = hitmark_num;
+
+        for(int j = num; j < objects.size(); ++j){
+            Mark mark = objects.get(j);
+            if(mark.getAppeared_timing() <= song_play_time){
+                int type = mark.getType();
+                if(type == 0){
+                    hitmark_num++;
+                    HitMarkData markData = (HitMarkData) mark;
+                    add(Layer.hit_mark, HitMark.get(markData));
+                }
+                else if(type == 1){
+                    hitmark_num++;
+                    SlideMarkData markData = (SlideMarkData) mark;
+                    add(Layer.slide_mark, SlideMark.get(markData));
                 }
                 else{
-                    break;
+                    hitmark_num++;
+                    SpinMarkData markData = (SpinMarkData) mark;
+                    add(Layer.spin_mark, SpinMark.get(markData));
                 }
             }
-
+            else{
+               break;
+            }
         }
 
         if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}

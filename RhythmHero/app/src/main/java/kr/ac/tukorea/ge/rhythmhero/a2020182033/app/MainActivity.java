@@ -1,7 +1,6 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.app;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,10 +11,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.GameView;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.HitMark;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.Mark;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.HitMarkData;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark.data.SlideMarkData;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private GameView gameView;
 
-    public static ArrayList<ArrayList<ArrayList<Mark>>> songMark = new ArrayList<>();
+    public static ArrayList<ArrayList<Mark>> songMark = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < 2; i++) {
             songMark.add(new ArrayList<>());
-            ArrayList<ArrayList<Mark>> objects = songMark.get(i);
-            for(int j = 0; j < 3; j++) {
-                objects.add(new ArrayList<>());
-            }
         }
 
         jsonParsing(getJsonString("CanonRock.json"), 0);
         jsonParsing(getJsonString("RustyNail.json"), 1);
+
+        Collections.sort(songMark.get(0));
+        Collections.sort(songMark.get(1));
 
         new TitleScene(MainActivity.this).pushScene();
     }
@@ -83,14 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 int color = markObject.getInt("color");
                 float x = (float)markObject.getDouble("x");
                 float y = (float)markObject.getDouble("y");
-                float appeared_timing = (float)markObject.getDouble("appeared_timing");
+                int appeared_timing = markObject.getInt("appeared_timing");
                 float touch_timing = (float)markObject.getDouble("touch_timing");
 
-                Mark mark = HitMark.get(num, color, x, y, appeared_timing, touch_timing);
-                Log.d("HitMark", "Parse");
-                ArrayList<Mark> objects = songMark.get(song_id).get(0);
-
-                objects.add(new HitMarkData(num, color, x, y, appeared_timing, touch_timing));
+                songMark.get(song_id).add(new HitMarkData(num, color, x, y, appeared_timing, touch_timing));
             }
 
             JSONArray slideArray = jsonObject.getJSONArray("SlideMark");
@@ -105,13 +99,11 @@ public class MainActivity extends AppCompatActivity {
                 float y1 = (float)markObject.getDouble("y1");
                 float x2 = (float)markObject.getDouble("x2");
                 float y2 = (float)markObject.getDouble("y2");
-                float appeared_timing = (float)markObject.getDouble("appeared_timing");
+                int appeared_timing = markObject.getInt("appeared_timing");
                 float start_timing = (float)markObject.getDouble("start_timing");
                 float end_timing = (float)markObject.getDouble("end_timing");
                 int return_num = markObject.getInt("return_num");
-
-                ArrayList<Mark> objects = songMark.get(song_id).get(1);
-                objects.add(new SlideMarkData(num, color, x1, y1, x2, y2, appeared_timing, start_timing, end_timing, return_num));
+                songMark.get(song_id).add(new SlideMarkData(num, color, x1, y1, x2, y2, appeared_timing, start_timing, end_timing, return_num));
             }
 
             JSONArray spinArray = jsonObject.getJSONArray("SpinMark");
@@ -120,11 +112,9 @@ public class MainActivity extends AppCompatActivity {
             {
                 JSONObject markObject = spinArray.getJSONObject(i);
 
-                float appeared_timing = (float)markObject.getDouble("appeared_timing");
+                int appeared_timing = markObject.getInt("appeared_timing");
                 float end_timing = (float)markObject.getDouble("end_timing");
-
-                ArrayList<Mark> objects = songMark.get(song_id).get(2);
-                objects.add(new SpinMarkData(appeared_timing, end_timing));
+                songMark.get(song_id).add(new SpinMarkData(appeared_timing, end_timing));
             }
 
         }catch (JSONException e) {

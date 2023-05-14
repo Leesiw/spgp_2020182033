@@ -55,7 +55,7 @@ public class SpinMark extends Mark implements IRecyclable{
         return mark;
     }
 
-    public static SpinMark get(float appeared_timing, float end_timing) {
+    public static SpinMark get(int appeared_timing, float end_timing) {
         SpinMark mark = (SpinMark) RecycleBin.get(SpinMark.class);
         if (mark == null) {
             mark = new SpinMark();
@@ -64,7 +64,7 @@ public class SpinMark extends Mark implements IRecyclable{
         return mark;
     }
 
-    private void init(float appeared_timing, float end_timing) {
+    private void init(int appeared_timing, float end_timing) {
         this.score = 0;
         this.appeared_timing = appeared_timing;
         this.end_timing = end_timing;

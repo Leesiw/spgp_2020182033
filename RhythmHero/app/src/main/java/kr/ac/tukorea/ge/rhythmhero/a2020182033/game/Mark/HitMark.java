@@ -65,7 +65,7 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
         circle2Paint.setStrokeWidth(0.1f);
     }
 
-    public static HitMark get(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
+    public static HitMark get(int num, int color, float x, float y, int appeared_timing, float touch_timing) {
         HitMark mark = (HitMark) RecycleBin.get(HitMark.class);
         if (mark == null) {
             mark = new HitMark();
@@ -83,7 +83,7 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
         return mark;
     }
 
-    private void init(int num, int color, float x, float y, float appeared_timing, float touch_timing) {
+    private void init(int num, int color, float x, float y, int appeared_timing, float touch_timing) {
         this.appeared_timing = appeared_timing;
         mark = null;
         mark = new Sprite(resIds[color][num - 1], x, y, SIZE, SIZE);

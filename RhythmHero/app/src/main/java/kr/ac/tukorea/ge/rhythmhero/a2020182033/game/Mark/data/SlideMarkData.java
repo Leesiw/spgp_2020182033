@@ -52,7 +52,7 @@ public class SlideMarkData extends Mark {
     protected int return_num;
 
     public SlideMarkData(int num, int color, float x1, float y1, float x2, float y2,
-    float appeared_timing, float start_timing, float end_timing, int return_num) {
+    int appeared_timing, float start_timing, float end_timing, int return_num) {
         super(appeared_timing);
         this.num = num;
         this.color = color;
@@ -63,6 +63,7 @@ public class SlideMarkData extends Mark {
         this.start_timing = start_timing;
         this.end_timing = end_timing;
         this.return_num = return_num;
+        this.type = 1;
     }
 
     @Override
