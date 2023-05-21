@@ -70,7 +70,7 @@ public class SelectScene extends BaseScene {
 
     @Override
     protected void onStart() {
-        Sound.playMusic(R.raw.selectbgm);
+        Sound.playMusic(R.raw.selectbgm, true);
     }
 
     @Override

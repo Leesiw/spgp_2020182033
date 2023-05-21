@@ -12,14 +12,20 @@ public class Sound {
     protected static MediaPlayer mediaPlayer;
     protected static SoundPool soundPool;
 
-    public static void playMusic(int resId) {
+    public static void playMusic(int resId, boolean loop) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
         mediaPlayer = MediaPlayer.create(GameView.view.getContext(), resId);
-        mediaPlayer.setLooping(true);
+        mediaPlayer.setLooping(loop);
         mediaPlayer.start();
     }
+
+    public static void SetPosition(int msec) {
+        if (mediaPlayer == null) return;
+        mediaPlayer.seekTo(msec);
+    }
+
     public static void stopMusic() {
         if (mediaPlayer == null) return;
         mediaPlayer.stop();

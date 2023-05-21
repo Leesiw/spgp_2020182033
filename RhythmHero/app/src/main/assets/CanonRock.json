@@ -64,8 +64,192 @@
       "appeared_timing": 19750,
       "touch_timing": 20750
     },
+
+    {
+      "num": 1,
+      "color": 1,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 21050,
+      "touch_timing": 22050
+    },
+    {
+      "num": 2,
+      "color": 1,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 22400,
+      "touch_timing": 23400
+    },
+    {
+      "num": 3,
+      "color": 1,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 23750,
+      "touch_timing": 24750
+    },
+    {
+      "num": 4,
+      "color": 1,
+      "x": 4.0,
+      "y": 6.0,
+      "appeared_timing": 25100,
+      "touch_timing": 26100
+    },
+    {
+      "num": 5,
+      "color": 1,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 26450,
+      "touch_timing": 27450
+    },
+    {
+      "num": 6,
+      "color": 1,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 27800,
+      "touch_timing": 28800
+    },
+    {
+      "num": 7,
+      "color": 1,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 29150,
+      "touch_timing": 30150
+    },
+    {
+      "num": 8,
+      "color": 1,
+      "x": 4.0,
+      "y": 6.0,
+      "appeared_timing": 30500,
+      "touch_timing": 31500
+    },
+
+    {
+      "num": 1,
+      "color": 2,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 31750,
+      "touch_timing": 32750
+    },
+    {
+      "num": 2,
+      "color": 2,
+      "x": 10.0,
+      "y": 3.0,
+      "appeared_timing": 33000,
+      "touch_timing": 34000
+    },
+    {
+      "num": 3,
+      "color": 2,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 33675,
+      "touch_timing": 34675
+    },
+    {
+      "num": 4,
+      "color": 2,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 34350,
+      "touch_timing": 35350
+    },
+    {
+      "num": 5,
+      "color": 2,
+      "x": 6.0,
+      "y": 6.0,
+      "appeared_timing": 35700,
+      "touch_timing": 36700
+    },
+    {
+      "num": 6,
+      "color": 2,
+      "x": 4.0,
+      "y": 6.0,
+      "appeared_timing": 36375,
+      "touch_timing": 37375
+    },
+
+    {
+      "num": 1,
+      "color": 3,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 37050,
+      "touch_timing": 38050
+    },
+    {
+      "num": 2,
+      "color": 3,
+      "x": 7.0,
+      "y": 3.0,
+      "appeared_timing": 37725,
+      "touch_timing": 38725
+    },
+    {
+      "num": 3,
+      "color": 3,
+      "x": 10.0,
+      "y": 3.0,
+      "appeared_timing": 38400,
+      "touch_timing": 39400
+    },
+    {
+      "num": 4,
+      "color": 3,
+      "x": 13.0,
+      "y": 3.0,
+      "appeared_timing": 39075,
+      "touch_timing": 40075
+    },
+
+    {
+      "num": 1,
+      "color": 0,
+      "x": 8.0,
+      "y": 4.5,
+      "appeared_timing": 42000,
+      "touch_timing": 43000
+    },
+    {
+      "num": 2,
+      "color": 0,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 42675,
+      "touch_timing": 43675
+    },
+    {
+      "num": 3,
+      "color": 0,
+      "x": 4.0,
+      "y": 6.0,
+      "appeared_timing": 43012,
+      "touch_timing": 44012
+    }
   ],
   "SlideMark": [
+    {
+      "num": 5,
+      "color": 3,
+      "x1": 6.0,
+      "y1": 4.5,
+      "x2": 10.0,
+      "y2": 4.5,
+      "appeared_timing": 39000,
+      "start_timing": 41000,
+      "end_timing": 42550,
+      "return_num": 1
+    }
 
   ],
 

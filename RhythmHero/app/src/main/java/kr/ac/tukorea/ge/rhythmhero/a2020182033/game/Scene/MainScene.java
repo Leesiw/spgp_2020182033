@@ -74,7 +74,9 @@ public class MainScene extends BaseScene {
         
         reset();
 
-        Sound.playMusic(R.raw.canonrock);
+        Sound.playMusic(R.raw.canonrock, false);
+
+        Sound.SetPosition((40000));
 
         song_end_time = Sound.getDuration(); // 노래 전체 길이
     }
