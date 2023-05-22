@@ -673,7 +673,130 @@
       "y": 4.5,
       "appeared_timing": 75435,
       "touch_timing": 76435
-    }
+    },
+
+    {
+      "num": 1,
+      "color": 0,
+      "x": 3.0,
+      "y": 3.0,
+      "appeared_timing": 90450,
+      "touch_timing": 91450
+    },
+    {
+      "num": 2,
+      "color": 0,
+      "x": 5.0,
+      "y": 6.0,
+      "appeared_timing": 90710,
+      "touch_timing": 91710
+    },
+    {
+      "num": 3,
+      "color": 0,
+      "x": 7.0,
+      "y": 3.0,
+      "appeared_timing": 91000,
+      "touch_timing": 92000
+    },
+    {
+      "num": 4,
+      "color": 0,
+      "x": 9.0,
+      "y": 6.0,
+      "appeared_timing": 91250,
+      "touch_timing": 92250
+    },
+    {
+      "num": 5,
+      "color": 0,
+      "x": 11.0,
+      "y": 3.0,
+      "appeared_timing": 91600,
+      "touch_timing": 92600
+    },
+    {
+      "num": 6,
+      "color": 0,
+      "x": 13.0,
+      "y": 6.0,
+      "appeared_timing": 92125,
+      "touch_timing": 93125
+    },
+
+
+    {
+      "num": 1,
+      "color": 1,
+      "x": 12.0,
+      "y": 4.0,
+      "appeared_timing": 92775,
+      "touch_timing": 93775
+    },
+    {
+      "num": 2,
+      "color": 1,
+      "x": 11.0,
+      "y": 5.0,
+      "appeared_timing": 92975,
+      "touch_timing": 93975
+    },
+    {
+      "num": 3,
+      "color": 1,
+      "x": 10.0,
+      "y": 4.0,
+      "appeared_timing": 93150,
+      "touch_timing": 94150
+    },
+    {
+      "num": 4,
+      "color": 1,
+      "x": 9.0,
+      "y": 5.0,
+      "appeared_timing": 93275,
+      "touch_timing": 94275
+    },
+    {
+      "num": 5,
+      "color": 1,
+      "x": 8.0,
+      "y": 4.0,
+      "appeared_timing": 93360,
+      "touch_timing": 94360
+    },
+    {
+      "num": 6,
+      "color": 1,
+      "x": 7.0,
+      "y": 5.0,
+      "appeared_timing": 93508,
+      "touch_timing": 94508
+    },
+    {
+      "num": 7,
+      "color": 1,
+      "x": 6.0,
+      "y": 4.0,
+      "appeared_timing": 93650,
+      "touch_timing": 94650
+    },
+    {
+      "num": 8,
+      "color": 1,
+      "x": 5.0,
+      "y": 5.0,
+      "appeared_timing": 93825,
+      "touch_timing": 94825
+    },
+    {
+      "num": 9,
+      "color": 1,
+      "x": 4.0,
+      "y": 4.0,
+      "appeared_timing": 94000,
+      "touch_timing": 95000
+    },
   ],
   "SlideMark": [
     {
