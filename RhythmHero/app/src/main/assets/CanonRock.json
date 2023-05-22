@@ -797,6 +797,98 @@
       "appeared_timing": 94000,
       "touch_timing": 95000
     },
+
+
+
+    {
+      "num": 1,
+      "color": 2,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 95200,
+      "touch_timing": 96200
+    },
+    {
+      "num": 2,
+      "color": 2,
+      "x": 9.0,
+      "y": 3.0,
+      "appeared_timing": 95500,
+      "touch_timing": 96500
+    },
+    {
+      "num": 3,
+      "color": 2,
+      "x": 6.0,
+      "y": 3.0,
+      "appeared_timing": 95800,
+      "touch_timing": 96800
+    },
+    {
+      "num": 4,
+      "color": 2,
+      "x": 3.0,
+      "y": 3.0,
+      "appeared_timing": 96075,
+      "touch_timing": 97075
+    },
+    {
+      "num": 5,
+      "color": 2,
+      "x": 3.0,
+      "y": 6.0,
+      "appeared_timing": 96450,
+      "touch_timing": 97450
+    },
+    {
+      "num": 6,
+      "color": 2,
+      "x": 6.0,
+      "y": 6.0,
+      "appeared_timing": 96725,
+      "touch_timing": 97725
+    },
+    {
+      "num": 7,
+      "color": 2,
+      "x": 9.0,
+      "y": 6.0,
+      "appeared_timing": 97025,
+      "touch_timing": 98025
+    },
+    {
+      "num": 8,
+      "color": 2,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 97325,
+      "touch_timing": 98325
+    },
+
+    {
+      "num": 1,
+      "color": 3,
+      "x": 6.0,
+      "y": 3.0,
+      "appeared_timing": 97650,
+      "touch_timing": 98650
+    },
+    {
+      "num": 2,
+      "color": 3,
+      "x": 8.0,
+      "y": 3.0,
+      "appeared_timing": 98125,
+      "touch_timing": 99125
+    },
+    {
+      "num": 3,
+      "color": 3,
+      "x": 10.0,
+      "y": 3.0,
+      "appeared_timing": 98700,
+      "touch_timing": 99700
+    }
   ],
   "SlideMark": [
     {
@@ -948,6 +1040,19 @@
       "start_timing": 79375,
       "end_timing": 80235,
       "return_num": 0
+    },
+
+    {
+      "num": 4,
+      "color": 3,
+      "x1": 6.0,
+      "y1": 4.5,
+      "x2": 10.0,
+      "y2": 4.5,
+      "appeared_timing": 100000,
+      "start_timing": 101000,
+      "end_timing": 103300,
+      "return_num": 2
     }
   ],
 
