@@ -51,7 +51,7 @@ public class SlideMark extends Mark implements IRecyclable {
     private boolean start_circle = true;
 
     private static Paint whitePaint = new Paint();
-    private static Paint roadPaint = new Paint();
+    private Paint roadPaint = new Paint();
     private Ball ball;
 
     public SlideMark() {

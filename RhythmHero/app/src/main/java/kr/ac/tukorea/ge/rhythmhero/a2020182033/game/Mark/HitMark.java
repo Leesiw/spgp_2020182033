@@ -19,7 +19,7 @@ public class HitMark extends Mark implements IRecyclable, IBoxCollidable {
 
     private Sprite mark;
     private static Paint circle1Paint = new Paint();
-    private static Paint circle2Paint = new Paint();
+    private Paint circle2Paint = new Paint();
 
     float x, y;
     protected RectF dstRect = new RectF();
