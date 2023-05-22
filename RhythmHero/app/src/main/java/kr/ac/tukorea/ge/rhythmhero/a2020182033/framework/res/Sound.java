@@ -48,6 +48,7 @@ public class Sound {
         return mediaPlayer.getCurrentPosition();
     }
 
+    public static boolean getIsPlaying() { return mediaPlayer.isPlaying(); }
     private static HashMap<Integer, Integer> soundIdMap = new HashMap<>();
     public static void playEffect(int resId) {
         SoundPool pool = getSoundPool();

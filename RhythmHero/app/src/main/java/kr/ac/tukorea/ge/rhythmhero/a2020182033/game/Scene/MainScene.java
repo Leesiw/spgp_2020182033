@@ -32,7 +32,6 @@ public class MainScene extends BaseScene {
 
     public static float song_play_time;
 
-    private float song_end_time;
     public static Score score;
     public static Score combo;
 
@@ -43,9 +42,6 @@ public class MainScene extends BaseScene {
     public static float gaugeValue;
 
     private static int hitmark_num;
-    private static int slidemark_num;
-    private static int spinmark_num;
-
     public static int[] score_num = {0, 0, 0, 0}; // x, 50, 100, 300
 
     public static int max_combo;
@@ -76,9 +72,7 @@ public class MainScene extends BaseScene {
 
         Sound.playMusic(R.raw.canonrock, false);
 
-        Sound.SetPosition((40000));
-
-        song_end_time = Sound.getDuration(); // 노래 전체 길이
+        Sound.SetPosition((68000));
     }
 
     static public void reset(){
@@ -89,8 +83,6 @@ public class MainScene extends BaseScene {
         max_combo = 0;
 
         hitmark_num = 0;
-        slidemark_num = 0;
-        spinmark_num = 0;
 
         song_play_time = 0.0f;
 
@@ -133,7 +125,7 @@ public class MainScene extends BaseScene {
             }
         }
 
-        if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 500_000_000f);}
+        if(gaugeValue > 0) {}//gaugeValue -= (elapsedNanos / 500_000_000f);}
         //if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 5000_000f);}
         else{
             reset();
@@ -144,7 +136,7 @@ public class MainScene extends BaseScene {
             new GameOverScene().pushScene();
         }
 
-        if(song_play_time > song_end_time){
+        if(!Sound.getIsPlaying()){
             new GameClearScene(score.getScore(), score_num[3], score_num[2], score_num[1], score_num[0],max_combo).pushScene();
         }
         super.update(elapsedNanos);
