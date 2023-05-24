@@ -75,7 +75,7 @@ public class MainScene extends BaseScene {
 
         Sound.playMusic(SongResIds[song_id], false);
 
-        //Sound.SetPosition((100000));
+        Sound.SetPosition((10000));
     }
 
     static public void reset(){
@@ -104,11 +104,10 @@ public class MainScene extends BaseScene {
 
         for(int j = mark_num; j < objects.size(); ++j){
             Mark mark = objects.get(j);
-            mark_num++;
             if(mark.getAppeared_timing() <= song_play_time){
                 int type = mark.getType();
+                mark_num++;
                 if(type == 0){
-
                     HitMarkData markData = (HitMarkData) mark;
                     add(Layer.hit_mark, HitMark.get(markData));
                 }
