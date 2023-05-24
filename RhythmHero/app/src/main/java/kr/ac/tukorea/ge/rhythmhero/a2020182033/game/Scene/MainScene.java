@@ -3,6 +3,7 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 public class MainScene extends BaseScene {
     private static final String TAG = MainScene.class.getSimpleName();
 
+    private static int SongResIds[]={ R.raw.canonrock, R.raw.rustynail };
+
     public static float song_play_time;
 
     public static Score score;
@@ -41,7 +44,7 @@ public class MainScene extends BaseScene {
     public Gauge gauge2;
     public static float gaugeValue;
 
-    private static int hitmark_num;
+    private static int mark_num;
     public static int[] score_num = {0, 0, 0, 0}; // x, 50, 100, 300
 
     public static int max_combo;
@@ -70,9 +73,9 @@ public class MainScene extends BaseScene {
         
         reset();
 
-        Sound.playMusic(R.raw.canonrock, false);
+        Sound.playMusic(SongResIds[song_id], false);
 
-        Sound.SetPosition((68000));
+        //Sound.SetPosition((100000));
     }
 
     static public void reset(){
@@ -82,7 +85,7 @@ public class MainScene extends BaseScene {
 
         max_combo = 0;
 
-        hitmark_num = 0;
+        mark_num = 0;
 
         song_play_time = 0.0f;
 
@@ -98,24 +101,22 @@ public class MainScene extends BaseScene {
         song_play_time = Sound.getCurPosition();
 
         ArrayList<Mark> objects = MainActivity.songMark.get(song_id);
-        int num = hitmark_num;
 
-        for(int j = num; j < objects.size(); ++j){
+        for(int j = mark_num; j < objects.size(); ++j){
             Mark mark = objects.get(j);
+            mark_num++;
             if(mark.getAppeared_timing() <= song_play_time){
                 int type = mark.getType();
                 if(type == 0){
-                    hitmark_num++;
+
                     HitMarkData markData = (HitMarkData) mark;
                     add(Layer.hit_mark, HitMark.get(markData));
                 }
                 else if(type == 1){
-                    hitmark_num++;
                     SlideMarkData markData = (SlideMarkData) mark;
                     add(Layer.slide_mark, SlideMark.get(markData));
                 }
                 else{
-                    hitmark_num++;
                     SpinMarkData markData = (SpinMarkData) mark;
                     add(Layer.spin_mark, SpinMark.get(markData));
                 }
@@ -164,6 +165,8 @@ public class MainScene extends BaseScene {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
+                Log.d("timing", "down" + Sound.getCurPosition());
+
                 float x = Metrics.toGameX(event.getX());
                 float y = Metrics.toGameY(event.getY());
 
