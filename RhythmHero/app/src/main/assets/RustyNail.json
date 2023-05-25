@@ -964,9 +964,107 @@
       "y": 4.5,
       "appeared_timing": 103615,
       "touch_timing": 104615
+    },
+
+
+    {
+      "num": 1,
+      "color": 2,
+      "x": 12.0,
+      "y": 4.5,
+      "appeared_timing": 106630,
+      "touch_timing": 107630
+    },
+    {
+      "num": 2,
+      "color": 2,
+      "x": 4.0,
+      "y": 4.5,
+      "appeared_timing": 107880,
+      "touch_timing": 108880
+    },
+    {
+      "num": 3,
+      "color": 2,
+      "x": 6.0,
+      "y": 4.5,
+      "appeared_timing": 109160,
+      "touch_timing": 110160
+    },
+    {
+      "num": 4,
+      "color": 2,
+      "x": 10.0,
+      "y": 4.5,
+      "appeared_timing": 110485,
+      "touch_timing": 111485
+    },
+
+
+    {
+      "num": 1,
+      "color": 3,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 111925,
+      "touch_timing": 112925
+    },
+    {
+      "num": 2,
+      "color": 3,
+      "x": 9.0,
+      "y": 3.0,
+      "appeared_timing": 112665,
+      "touch_timing": 113665
+    },
+    {
+      "num": 3,
+      "color": 3,
+      "x": 6.0,
+      "y": 3.0,
+      "appeared_timing": 113375,
+      "touch_timing": 114375
+    },
+    {
+      "num": 4,
+      "color": 3,
+      "x": 3.0,
+      "y": 3.0,
+      "appeared_timing": 114050,
+      "touch_timing": 115050
+    },
+    {
+      "num": 5,
+      "color": 3,
+      "x": 3.0,
+      "y": 6.0,
+      "appeared_timing": 114715,
+      "touch_timing": 115715
+    },
+    {
+      "num": 6,
+      "color": 3,
+      "x": 6.0,
+      "y": 6.0,
+      "appeared_timing": 115400,
+      "touch_timing": 116400
+    },
+    {
+      "num": 7,
+      "color": 3,
+      "x": 9.0,
+      "y": 6.0,
+      "appeared_timing": 116090,
+      "touch_timing": 117090
+    },
+    {
+      "num": 8,
+      "color": 3,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 116785,
+      "touch_timing": 117785
     }
-
-
   ],
   "SlideMark": [
     {
@@ -1039,6 +1137,10 @@
     {
       "appeared_timing": 63720,
       "end_timing": 73475
+    },
+    {
+    "appeared_timing": 118500,
+    "end_timing": 133000
     }
   ]
 }
