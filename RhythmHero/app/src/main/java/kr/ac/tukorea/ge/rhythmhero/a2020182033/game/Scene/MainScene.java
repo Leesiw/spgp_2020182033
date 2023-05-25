@@ -3,7 +3,6 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -74,8 +73,6 @@ public class MainScene extends BaseScene {
         reset();
 
         Sound.playMusic(SongResIds[song_id], false);
-
-        Sound.SetPosition((10000));
     }
 
     static public void reset(){
@@ -125,7 +122,7 @@ public class MainScene extends BaseScene {
             }
         }
 
-        if(gaugeValue > 0) {}//gaugeValue -= (elapsedNanos / 500_000_000f);}
+        if(gaugeValue > 0) { gaugeValue -= (elapsedNanos / 500_000_000f); }
         //if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 5000_000f);}
         else{
             reset();
@@ -164,8 +161,6 @@ public class MainScene extends BaseScene {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                Log.d("timing", "down" + Sound.getCurPosition());
-
                 float x = Metrics.toGameX(event.getX());
                 float y = Metrics.toGameY(event.getY());
 
