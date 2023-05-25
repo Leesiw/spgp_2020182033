@@ -763,6 +763,106 @@
       "y": 4.5,
       "appeared_timing": 84425,
       "touch_timing": 85425
+    },
+
+    {
+      "num": 1,
+      "color": 0,
+      "x": 4.0,
+      "y": 4.5,
+      "appeared_timing": 84760,
+      "touch_timing": 85760
+    },
+    {
+      "num": 2,
+      "color": 0,
+      "x": 12.0,
+      "y": 4.5,
+      "appeared_timing": 86135,
+      "touch_timing": 87135
+    },
+
+
+    {
+      "num": 3,
+      "color": 0,
+      "x": 5.0,
+      "y": 4.5,
+      "appeared_timing": 87590,
+      "touch_timing": 88590
+    },
+    {
+      "num": 4,
+      "color": 0,
+      "x": 11.0,
+      "y": 4.5,
+      "appeared_timing": 87925,
+      "touch_timing": 88925
+    },
+    {
+      "num": 5,
+      "color": 0,
+      "x": 6.0,
+      "y": 4.5,
+      "appeared_timing": 88275,
+      "touch_timing": 89275
+    },
+    {
+      "num": 6,
+      "color": 0,
+      "x": 10.0,
+      "y": 4.5,
+      "appeared_timing": 88455,
+      "touch_timing": 89455
+    },
+    {
+      "num": 7,
+      "color": 0,
+      "x": 5.0,
+      "y": 4.5,
+      "appeared_timing": 88810,
+      "touch_timing": 89810
+    },
+    {
+      "num": 8,
+      "color": 0,
+      "x": 11.0,
+      "y": 4.5,
+      "appeared_timing": 89210,
+      "touch_timing": 90210
+    },
+    {
+      "num": 9,
+      "color": 0,
+      "x": 6.0,
+      "y": 4.5,
+      "appeared_timing": 89625,
+      "touch_timing": 90625
+    },
+    {
+      "num": 10,
+      "color": 0,
+      "x": 10.0,
+      "y": 4.5,
+      "appeared_timing": 89790,
+      "touch_timing": 90790
+    },
+
+    {
+      "num": 1,
+      "color": 1,
+      "x": 4.0,
+      "y": 4.5,
+      "appeared_timing": 90340,
+      "touch_timing": 91340
+    },
+    {
+      "num": 2,
+      "color": 1,
+      "x": 12.0,
+      "y": 4.5,
+      "appeared_timing": 91650,
+      "touch_timing": 92650
     }
   ],
   "SlideMark": [
@@ -790,6 +890,19 @@
       "start_timing": 50400,
       "end_timing": 54730,
       "return_num": 3
+    },
+
+    {
+      "num": 3,
+      "color": 1,
+      "x1": 6.0,
+      "y1": 5.5,
+      "x2": 10.0,
+      "y2": 5.5,
+      "appeared_timing": 92970,
+      "start_timing": 93970,
+      "end_timing": 96090,
+      "return_num": 4
     }
   ],
 
