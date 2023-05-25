@@ -3,7 +3,6 @@ package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Mark;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IRecyclable;
@@ -230,11 +229,10 @@ public class SlideMark extends Mark implements IRecyclable {
         }
 
         if (end_timing - MainScene.song_play_time < 0.f) {
-            if(isTouching && CollisionHelper.collides(ball, cur_x, cur_y)){
+            if(isTouching && CollisionHelper.collides(ball, cur_x, cur_y)) {
                 MainScene.score.add(30);
                 score += 30;
             }
-            BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
             if(score == 300) {
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 3));
             }
@@ -247,7 +245,8 @@ public class SlideMark extends Mark implements IRecyclable {
             else{
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 0));
             }
-            Log.d("Score", ""+ score);
+            BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
+            //Log.d("Score", ""+ score);
         }
 
     }

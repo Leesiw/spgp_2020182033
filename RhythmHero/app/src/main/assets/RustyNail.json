@@ -413,8 +413,40 @@
       "y": 6.0,
       "appeared_timing": 43490,
       "touch_timing": 44490
-    }
+    },
 
+    {
+      "num": 1,
+      "color": 3,
+      "x": 12.0,
+      "y": 4.5,
+      "appeared_timing": 44000,
+      "touch_timing": 45000
+    },
+    {
+      "num": 2,
+      "color": 3,
+      "x": 3.0,
+      "y": 4.5,
+      "appeared_timing": 45250,
+      "touch_timing": 46250
+    },
+    {
+      "num": 3,
+      "color": 3,
+      "x": 10.0,
+      "y": 4.5,
+      "appeared_timing": 46700,
+      "touch_timing": 47700
+    },
+    {
+      "num": 4,
+      "color": 3,
+      "x": 6.0,
+      "y": 4.5,
+      "appeared_timing": 48075,
+      "touch_timing": 49075
+    }
   ],
   "SlideMark": [
     {
@@ -428,6 +460,19 @@
       "start_timing": 31150,
       "end_timing": 33275,
       "return_num": 4
+    },
+
+    {
+      "num": 5,
+      "color": 3,
+      "x1": 6.0,
+      "y1": 5.5,
+      "x2": 10.0,
+      "y2": 5.5,
+      "appeared_timing": 49400,
+      "start_timing": 50400,
+      "end_timing": 54730,
+      "return_num": 3
     }
   ],
 
