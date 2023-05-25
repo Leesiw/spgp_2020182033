@@ -233,6 +233,7 @@ public class SlideMark extends Mark implements IRecyclable {
                 MainScene.score.add(30);
                 score += 30;
             }
+            BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
             if(score == 300) {
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 3));
             }
@@ -245,7 +246,7 @@ public class SlideMark extends Mark implements IRecyclable {
             else{
                 BaseScene.getTopScene().add(MainScene.Layer.score_mark, ScoreMark.get(ball.getX(), ball.getY(), 0));
             }
-            BaseScene.getTopScene().remove(MainScene.Layer.slide_mark, this);
+
             //Log.d("Score", ""+ score);
         }
 

@@ -42,6 +42,8 @@ public class Ball extends Sprite implements IBoxCollidable {
         this.x2 = x2;
         this.y2 = y2;
 
+        this.dir = 1;
+
         this.ball_start_timing = start_timing;
         this.end_timing = end_timing;
         this.ball_end_timing = (end_timing - start_timing) / (return_num + 1) + start_timing;
