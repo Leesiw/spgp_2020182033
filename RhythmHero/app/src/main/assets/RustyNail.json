@@ -1022,16 +1022,16 @@
       "color": 3,
       "x": 6.0,
       "y": 3.0,
-      "appeared_timing": 113375,
-      "touch_timing": 114375
+      "appeared_timing": 113275,
+      "touch_timing": 114275
     },
     {
       "num": 4,
       "color": 3,
       "x": 3.0,
       "y": 3.0,
-      "appeared_timing": 114050,
-      "touch_timing": 115050
+      "appeared_timing": 114040,
+      "touch_timing": 115040
     },
     {
       "num": 5,
@@ -1046,24 +1046,24 @@
       "color": 3,
       "x": 6.0,
       "y": 6.0,
-      "appeared_timing": 115400,
-      "touch_timing": 116400
+      "appeared_timing": 115375,
+      "touch_timing": 116375
     },
     {
       "num": 7,
       "color": 3,
       "x": 9.0,
       "y": 6.0,
-      "appeared_timing": 116090,
-      "touch_timing": 117090
+      "appeared_timing": 116075,
+      "touch_timing": 117075
     },
     {
       "num": 8,
       "color": 3,
       "x": 12.0,
       "y": 6.0,
-      "appeared_timing": 116785,
-      "touch_timing": 117785
+      "appeared_timing": 116800,
+      "touch_timing": 117800
     }
   ],
   "SlideMark": [
