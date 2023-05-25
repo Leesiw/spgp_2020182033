@@ -476,24 +476,24 @@
     {
       "num": 1,
       "color": 1,
-      "x": 4.0,
-      "y": 4.5,
+      "x": 12.0,
+      "y": 6.5,
       "appeared_timing": 55890,
       "touch_timing": 56890
     },
     {
       "num": 2,
       "color": 1,
-      "x": 10.0,
-      "y": 4.5,
+      "x": 6.0,
+      "y": 6.5,
       "appeared_timing": 56535,
       "touch_timing": 57535
     },
     {
       "num": 3,
       "color": 1,
-      "x": 12.0,
-      "y": 4.5,
+      "x": 4.0,
+      "y": 6.5,
       "appeared_timing": 56880,
       "touch_timing": 57880
     },
@@ -526,24 +526,24 @@
     {
       "num": 1,
       "color": 3,
-      "x": 4.0,
-      "y": 4.5,
+      "x": 12.0,
+      "y": 2.5,
       "appeared_timing": 58655,
       "touch_timing": 59655
     },
     {
       "num": 2,
       "color": 3,
-      "x": 10.0,
-      "y": 4.5,
+      "x": 6.0,
+      "y": 2.5,
       "appeared_timing": 59250,
       "touch_timing": 60250
     },
     {
       "num": 3,
       "color": 3,
-      "x": 12.0,
-      "y": 4.5,
+      "x": 4.0,
+      "y": 2.5,
       "appeared_timing": 59585,
       "touch_timing": 60585
     },
@@ -576,24 +576,24 @@
     {
       "num": 1,
       "color": 1,
-      "x": 4.0,
-      "y": 4.5,
+      "x": 12.0,
+      "y": 6.5,
       "appeared_timing": 61340,
       "touch_timing": 62340
     },
     {
       "num": 2,
       "color": 1,
-      "x": 10.0,
-      "y": 4.5,
+      "x": 6.0,
+      "y": 6.5,
       "appeared_timing": 61940,
       "touch_timing": 62940
     },
     {
       "num": 3,
       "color": 1,
-      "x": 12.0,
-      "y": 4.5,
+      "x": 4.0,
+      "y": 6.5,
       "appeared_timing": 62270,
       "touch_timing": 63270
     }
