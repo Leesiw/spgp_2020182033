@@ -863,7 +863,110 @@
       "y": 4.5,
       "appeared_timing": 91650,
       "touch_timing": 92650
+    },
+
+
+    {
+      "num": 1,
+      "color": 2,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 95900,
+      "touch_timing": 96900
+    },
+    {
+      "num": 2,
+      "color": 2,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 97190,
+      "touch_timing": 98190
+    },
+    {
+      "num": 3,
+      "color": 2,
+      "x": 12.0,
+      "y": 6.0,
+      "appeared_timing": 98500,
+      "touch_timing": 99500
+    },
+    {
+      "num": 4,
+      "color": 2,
+      "x": 4.0,
+      "y": 6.0,
+      "appeared_timing": 99945,
+      "touch_timing": 100945
+    },
+
+    {
+      "num": 1,
+      "color": 3,
+      "x": 4.0,
+      "y": 3.0,
+      "appeared_timing": 101360,
+      "touch_timing": 102360
+    },
+    {
+      "num": 2,
+      "color": 3,
+      "x": 12.0,
+      "y": 3.0,
+      "appeared_timing": 101735,
+      "touch_timing": 102735
+    },
+    {
+      "num": 3,
+      "color": 3,
+      "x": 10.0,
+      "y": 3.0,
+      "appeared_timing": 102090,
+      "touch_timing": 103090
+    },
+    {
+      "num": 4,
+      "color": 3,
+      "x": 6.0,
+      "y": 3.0,
+      "appeared_timing": 102220,
+      "touch_timing": 103220
+    },
+
+
+    {
+      "num": 1,
+      "color": 0,
+      "x": 12.0,
+      "y": 4.5,
+      "appeared_timing": 102635,
+      "touch_timing": 103635
+    },
+    {
+      "num": 2,
+      "color": 0,
+      "x": 4.0,
+      "y": 4.5,
+      "appeared_timing": 103080,
+      "touch_timing": 104080
+    },
+    {
+      "num": 3,
+      "color": 0,
+      "x": 6.0,
+      "y": 4.5,
+      "appeared_timing": 103475,
+      "touch_timing": 104475
+    },
+    {
+      "num": 4,
+      "color": 0,
+      "x": 10.0,
+      "y": 4.5,
+      "appeared_timing": 103615,
+      "touch_timing": 104615
     }
+
+
   ],
   "SlideMark": [
     {
@@ -903,6 +1006,32 @@
       "start_timing": 93970,
       "end_timing": 96090,
       "return_num": 4
+    },
+
+    {
+      "num": 1,
+      "color": 1,
+      "x1": 6.0,
+      "y1": 6.0,
+      "x2": 10.0,
+      "y2": 6.0,
+      "appeared_timing": 104000,
+      "start_timing": 105000,
+      "end_timing": 106000,
+      "return_num": 1
+    },
+
+    {
+      "num": 2,
+      "color": 1,
+      "x1": 10.0,
+      "y1": 4.5,
+      "x2": 6.0,
+      "y2": 4.5,
+      "appeared_timing": 105400,
+      "start_timing": 106400,
+      "end_timing": 107400,
+      "return_num": 1
     }
   ],
 
