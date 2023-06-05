@@ -143,4 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
         return json;
     }
+
+    @Override
+    public void onBackPressed() {
+        if (gameView.handleBackKey()) {
+            return;
+        }
+        super.onBackPressed();
+    }
 }

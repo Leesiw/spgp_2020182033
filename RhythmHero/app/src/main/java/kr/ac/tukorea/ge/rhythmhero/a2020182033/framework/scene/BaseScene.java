@@ -156,4 +156,9 @@ public class BaseScene {
     }
     protected void onEnd() {
     }
+
+    public boolean handleBackKey() {
+        popScene();
+        return true;
+    }
 }
