@@ -225,6 +225,7 @@ public class MainScene extends BaseScene {
 
     @Override
     public boolean handleBackKey() {
+        Sound.pauseMusic();
         new PausedScene().pushScene();
         return true;
     }
