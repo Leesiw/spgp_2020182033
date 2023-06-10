@@ -1,6 +1,5 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects;
 
-import android.util.Log;
 import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.ITouchable;
@@ -23,13 +22,12 @@ public class Button extends Sprite implements ITouchable {
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        Log.d(TAG, "touch");
         float x = Metrics.toGameX(e.getX());
         float y = Metrics.toGameY(e.getY());
         if (!dstRect.contains(x, y)) {
             return false;
         }
-        Log.d(TAG, "Button.onTouch(" + System.identityHashCode(this) + ", " + e.getAction() + ", " + e.getX() + ", " + e.getY());
+        // Log.d(TAG, "Button.onTouch(" + System.identityHashCode(this) + ", " + e.getAction() + ", " + e.getX() + ", " + e.getY());
         int action = e.getAction();
         if (action == MotionEvent.ACTION_DOWN) {
             callback.onTouch(Action.pressed);
