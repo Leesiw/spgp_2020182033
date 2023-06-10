@@ -10,6 +10,7 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.app.MainActivity;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.Sound;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
@@ -48,7 +49,7 @@ public class MainScene extends BaseScene {
     public static int max_combo;
 
     public enum Layer {
-        bg, hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
+        bg, hit_mark, slide_mark, spin_mark, score_mark, ui, touch, COUNT
     }
 
     public MainScene(int song_id) {
@@ -70,7 +71,18 @@ public class MainScene extends BaseScene {
         gauge1 = new Gauge(0.8f, R.color.pink, R.color.black, 1.f, 0.5f, 7.f);
         gauge2 = new Gauge(0.8f, R.color.yellow, R.color.black, 8.f,0.5f, 7.f);
         gaugeValue = 100.f;
-        
+
+        add(Layer.touch, new Button(R.mipmap.btn_pause, 15.0f, 1.5f, 1.0f, 1.0f, new Button.Callback() {
+            @Override
+            public boolean onTouch(Button.Action action) {
+                if (action == Button.Action.pressed) {
+                    Sound.pauseMusic();
+                    new PausedScene().pushScene();
+                }
+                return true;
+            }
+        }));
+
         reset();
 
         Sound.playMusic(SongResIds[song_id], false);
@@ -95,7 +107,6 @@ public class MainScene extends BaseScene {
 
     @Override
     public void update(long elapsedNanos) {
-        //song_play_time += elapsedNanos / 1_000_000;//_000f; // 이후 곡 재생 시간으로 변경
         song_play_time = Sound.getCurPosition();
 
         ArrayList<Mark> objects = MainActivity.songMark.get(song_id);
@@ -151,11 +162,6 @@ public class MainScene extends BaseScene {
             gauge1.draw(canvas, gaugeValue / 50.f);
             gauge2.draw(canvas, 0.f);
         }
-
-
-
-        //song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
-        //super.update(elapsedNanos);
     }
 
     @Override
@@ -191,6 +197,9 @@ public class MainScene extends BaseScene {
                     gobj.touchedHitMark(x, y);
                     return true;
                 }
+
+                super.onTouchEvent(event);
+
                 return true;
             }
             case MotionEvent.ACTION_MOVE: {
@@ -230,5 +239,10 @@ public class MainScene extends BaseScene {
         Sound.pauseMusic();
         new PausedScene().pushScene();
         return true;
+    }
+
+    @Override
+    protected int getTouchLayerIndex() {
+        return MainScene.Layer.touch.ordinal();
     }
 }
