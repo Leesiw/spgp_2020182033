@@ -222,4 +222,10 @@ public class MainScene extends BaseScene {
         }
         return super.onTouchEvent(event);
     }
+
+    @Override
+    public boolean handleBackKey() {
+        new PausedScene().pushScene();
+        return true;
+    }
 }

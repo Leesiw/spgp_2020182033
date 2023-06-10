@@ -1,6 +1,8 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -149,6 +151,18 @@ public class GameView extends View implements Choreographer.FrameCallback {
         running = true;
         Choreographer.getInstance().postFrameCallback(this);
     }
+
+    public Activity getActivity() {
+        Context context = getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
+    }
+
 
     public boolean handleBackKey() {
         BaseScene topScene = BaseScene.getTopScene();
