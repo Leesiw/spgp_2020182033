@@ -7,8 +7,6 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.res.Sound;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
 
 public class PausedScene extends BaseScene {
-   // private final Sprite title;
-    private float angle;
 
     public enum Layer {
         bg, touch, COUNT
@@ -38,7 +36,7 @@ public class PausedScene extends BaseScene {
             }
         }));
     }
-    
+
     @Override
     public boolean isTransparent() {
         return true;
