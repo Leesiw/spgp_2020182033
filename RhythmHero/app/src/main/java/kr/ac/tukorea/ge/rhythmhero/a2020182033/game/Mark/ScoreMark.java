@@ -32,7 +32,11 @@ public class ScoreMark extends Sprite implements IRecyclable {
         if (mark == null) {
             mark = new ScoreMark();
         }
+
         MainScene.gaugeValue += score;
+        if(MainScene.gaugeValue > 100.f) {
+            MainScene.gaugeValue = 100.f;
+        }
 
         MainScene.score_num[score] += 1;
         if(score >= 2) {
