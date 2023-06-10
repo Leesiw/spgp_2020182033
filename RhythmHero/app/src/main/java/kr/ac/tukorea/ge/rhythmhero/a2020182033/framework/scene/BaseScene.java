@@ -146,13 +146,7 @@ public class BaseScene {
         }
         return count;
     }
-    public void update(long nanos) {
-        long prev = previousNanos;
-        previousNanos = nanos;
-        if (prev == 0) {
-            return;
-        }
-        long elapsedNanos = nanos - prev;
+    public void update(long elapsedNanos) {
         frameTime = elapsedNanos / 1_000_000_000f;
         for (ArrayList<IGameObject> objects: layers) {
             for (int i = objects.size() - 1; i >= 0; i--) {
