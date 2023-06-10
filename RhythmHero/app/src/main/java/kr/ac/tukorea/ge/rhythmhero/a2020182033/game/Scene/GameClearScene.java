@@ -114,7 +114,7 @@ public class GameClearScene extends BaseScene {
 
     @Override
     protected int getTouchLayerIndex() {
-        return SelectScene.Layer.touch.ordinal();
+        return GameClearScene.Layer.touch.ordinal();
     }
 
 }

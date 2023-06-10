@@ -51,6 +51,6 @@ public class GameOverScene extends BaseScene {
 
     @Override
     protected int getTouchLayerIndex() {
-        return PausedScene.Layer.touch.ordinal();
+        return GameOverScene.Layer.touch.ordinal();
     }
 }
