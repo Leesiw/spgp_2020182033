@@ -107,7 +107,7 @@ public class GameClearScene extends BaseScene {
             case MotionEvent.ACTION_DOWN: {
                 float x = Metrics.toGameX(event.getX());
                 float y = Metrics.toGameY(event.getY());
-                ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(GameOverScene.Layer.button);
+                ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(GameClearScene.Layer.button);
                 for (int i = buttons.size() - 1; i >= 0; i--) {
                     Button gobj = (Button) buttons.get(i);
                     if(CollisionHelper.collides(gobj, x, y)) {
