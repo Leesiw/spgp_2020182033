@@ -123,15 +123,6 @@ public class BaseScene {
         });
     }
 
-    public <E extends Enum> void remove(E layerEnum) {
-        ArrayList<IGameObject> objects = layers.get(layerEnum.ordinal());
-
-        for(IGameObject obj : objects){
-            remove(layerEnum, obj);
-        }
-
-    }
-
     public <E extends Enum> void remove(E layerEnum, IGameObject gobj) {
         boolean removed = getObjectsAt(layerEnum).remove(gobj);
         if (removed && gobj instanceof IRecyclable) {

@@ -14,17 +14,18 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Button;
 
 public class GameOverScene extends BaseScene {
     private static final String TAG = GameOverScene.class.getSimpleName();
-
+    private int song_id;
     public enum Layer {
         bg, button, COUNT
     }
 
-    public GameOverScene() {
+    public GameOverScene(int song_id) {
         initLayers(SelectScene.Layer.COUNT);
         add(Layer.bg, new Sprite(R.mipmap.pxfuel, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
         add(Layer.bg, new Sprite(R.mipmap.restart, Metrics.game_width / 2, Metrics.game_height / 2 - 1.f, 4.f, 1.f));
         add(Layer.button, new Button(R.mipmap.yes, Metrics.game_width / 2 - 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,1));
         add(Layer.button, new Button(R.mipmap.no, Metrics.game_width / 2 + 2.f, Metrics.game_height / 2 + 1.f, 2.5f, 1.5f,2));
+        this.song_id = song_id;
     }
 
     @Override
@@ -45,11 +46,10 @@ public class GameOverScene extends BaseScene {
                     if(CollisionHelper.collides(gobj, x, y)) {
                         switch (gobj.getId()) {
                             case 1:
-                                MainScene.reset();
                                 getTopScene().popScene();
+                                new MainScene(song_id).pushScene();
                                 break;
                             case 2:
-                                getTopScene().popScene();
                                 getTopScene().popScene();
                                 break;
                         }

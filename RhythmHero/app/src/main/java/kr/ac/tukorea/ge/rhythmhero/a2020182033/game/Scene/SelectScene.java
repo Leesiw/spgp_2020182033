@@ -52,11 +52,11 @@ public class SelectScene extends BaseScene {
                         switch (gobj.getId()) {
                             case 1:
                                 Sound.stopMusic();
-                                new MainScene(this.context,0).pushScene();
+                                new MainScene(0).pushScene();
                                 break;
                             case 2:
                                 Sound.stopMusic();
-                                new MainScene(this.context,1).pushScene();
+                                new MainScene(1).pushScene();
                                 break;
                         }
                     }

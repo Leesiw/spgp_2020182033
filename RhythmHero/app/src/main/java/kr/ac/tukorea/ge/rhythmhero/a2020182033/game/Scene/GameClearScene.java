@@ -16,13 +16,16 @@ import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 public class GameClearScene extends BaseScene {
     private static final String TAG = GameClearScene.class.getSimpleName();
 
+    private int song_id;
     public enum Layer {
         bg, button, COUNT
     }
 
-    public GameClearScene(int score, int num_300, int num_100, int num_50, int num_x, int max_combo) {
+    public GameClearScene(int song_num, int score, int num_300, int num_100, int num_50, int num_x, int max_combo) {
         initLayers(SelectScene.Layer.COUNT);
         add(Layer.bg, new Sprite(R.mipmap.clearescenebg, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
+
+        this.song_id = song_num;
 
         if(num_x == 0) {
             if(num_50 == 0) {
@@ -110,11 +113,10 @@ public class GameClearScene extends BaseScene {
                     if(CollisionHelper.collides(gobj, x, y)) {
                         switch (gobj.getId()) {
                             case 1:
-                                MainScene.reset();
                                 getTopScene().popScene();
+                                new MainScene(song_id).pushScene();
                                 break;
                             case 2:
-                                getTopScene().popScene();
                                 getTopScene().popScene();
                                 break;
                         }

@@ -1,7 +1,6 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
@@ -52,7 +51,7 @@ public class MainScene extends BaseScene {
         hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
 
-    public MainScene(Context context, int song_id) {
+    public MainScene(int song_id) {
         this.song_id = song_id;
 
         initLayers(Layer.COUNT);
@@ -125,16 +124,15 @@ public class MainScene extends BaseScene {
         if(gaugeValue > 0) { gaugeValue -= (elapsedNanos / 500_000_000f); }
         //if(gaugeValue > 0) {gaugeValue -= (elapsedNanos / 5000_000f);}
         else{
-            reset();
-
-            remove(Layer.hit_mark);
-            remove(Layer.slide_mark);
-            remove(Layer.spin_mark);
-            new GameOverScene().pushScene();
+            Sound.stopMusic();
+            getTopScene().popScene();
+            new GameOverScene(song_id).pushScene();
+            return;
         }
 
         if(!Sound.getIsPlaying()){
-            new GameClearScene(score.getScore(), score_num[3], score_num[2], score_num[1], score_num[0],max_combo).pushScene();
+            getTopScene().popScene();
+            new GameClearScene(song_id, score.getScore(), score_num[3], score_num[2], score_num[1], score_num[0],max_combo).pushScene();
         }
         super.update(elapsedNanos);
     }
