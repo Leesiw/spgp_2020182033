@@ -16,8 +16,7 @@ public class ScoreMark extends Sprite implements IRecyclable {
     private int alpha;
 
     private static final int[] resIds = {
-        R.mipmap.scorex, R.mipmap.score50, R.mipmap.score100, R.mipmap.score300,
-            R.mipmap.scorebeat100, R.mipmap.scorebeat300, R.mipmap.scoreelitebeat,
+        R.mipmap.scorex, R.mipmap.score50, R.mipmap.score100, R.mipmap.score300
     };
 
     public ScoreMark() {
