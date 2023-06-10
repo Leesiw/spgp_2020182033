@@ -1,16 +1,9 @@
 package kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Scene;
 
-import android.view.MotionEvent;
-
-import java.util.ArrayList;
-
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.R;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Sprite;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.scene.BaseScene;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.util.CollisionHelper;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.view.Metrics;
-import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Button;
 import kr.ac.tukorea.ge.rhythmhero.a2020182033.game.Score;
 
 public class GameClearScene extends BaseScene {
@@ -18,7 +11,7 @@ public class GameClearScene extends BaseScene {
 
     private int song_id;
     public enum Layer {
-        bg, button, COUNT
+        bg, touch, COUNT
     }
 
     public GameClearScene(int song_num, int score, int num_300, int num_100, int num_50, int num_x, int max_combo) {
@@ -90,10 +83,29 @@ public class GameClearScene extends BaseScene {
         add(Layer.bg, scorex);
 
 
-        //add(Layer.bg, new Sprite(R.mipmap.restart, Metrics.game_width / 2, Metrics.game_height / 2 - 1.f, 4.f, 1.f));
-        add(Layer.button, new Button(R.mipmap.prev, 1.f, Metrics.game_height - 1.f, 1.f, 1.f,1));
-        add(Layer.button, new Button(R.mipmap.next, Metrics.game_width - 1.f, Metrics.game_height - 1.f, 1.f, 1.f,2));
-    }
+        add(GameClearScene.Layer.touch, new kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button(
+                R.mipmap.prev, 1.f, Metrics.game_height - 1.f, 1.f, 1.f, new kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Callback() {
+            @Override
+            public boolean onTouch(kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Action action) {
+                if (action == kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Action.pressed) {
+                    getTopScene().popScene();
+                    new MainScene(song_id).pushScene();
+                }
+                return false;
+            }
+        }));
+        add(GameClearScene.Layer.touch, new kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button(
+                R.mipmap.next, Metrics.game_width - 1.f, Metrics.game_height - 1.f, 1.f, 1.f, new kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Callback() {
+            @Override
+            public boolean onTouch(kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Action action) {
+                if (action == kr.ac.tukorea.ge.rhythmhero.a2020182033.framework.objects.Button.Action.pressed) {
+                    getTopScene().popScene();
+                }
+                return false;
+            }
+        }));
+
+ }
 
     @Override
     public void update(long elapsedNanos) {
@@ -101,30 +113,8 @@ public class GameClearScene extends BaseScene {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN: {
-                float x = Metrics.toGameX(event.getX());
-                float y = Metrics.toGameY(event.getY());
-                ArrayList<IGameObject> buttons = getTopScene().getObjectsAt(GameClearScene.Layer.button);
-                for (int i = buttons.size() - 1; i >= 0; i--) {
-                    Button gobj = (Button) buttons.get(i);
-                    if(CollisionHelper.collides(gobj, x, y)) {
-                        switch (gobj.getId()) {
-                            case 1:
-                                getTopScene().popScene();
-                                new MainScene(song_id).pushScene();
-                                break;
-                            case 2:
-                                getTopScene().popScene();
-                                break;
-                        }
-                    }
-                }
-                return true;
-            }
-        }
-        return super.onTouchEvent(event);
+    protected int getTouchLayerIndex() {
+        return SelectScene.Layer.touch.ordinal();
     }
+
 }
