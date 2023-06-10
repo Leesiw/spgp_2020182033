@@ -18,6 +18,7 @@ public class SelectScene extends BaseScene {
     Context context;
 
     public SelectScene(Context context) {
+        Sound.loadEffect(R.raw.cymbal);
         this.context = context;
         initLayers(SelectScene.Layer.COUNT);
         add(Layer.bg, new Sprite(R.mipmap.pxfuel, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
