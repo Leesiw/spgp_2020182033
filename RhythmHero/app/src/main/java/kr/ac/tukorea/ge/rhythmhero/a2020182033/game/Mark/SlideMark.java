@@ -23,7 +23,7 @@ public class SlideMark extends Mark implements IRecyclable {
             {R.mipmap.blue, R.mipmap.green, R.mipmap.purple,
             R.mipmap.red, R.mipmap.yellow},
             {R.mipmap.bluereturn, R.mipmap.greenreturn, R.mipmap.purplereturn,
-            R.mipmap.redreturn, R.mipmap.yellowreturn},
+            R.mipmap.redreturn, R.mipmap.yellowreturn}
     };
 
     private int color;

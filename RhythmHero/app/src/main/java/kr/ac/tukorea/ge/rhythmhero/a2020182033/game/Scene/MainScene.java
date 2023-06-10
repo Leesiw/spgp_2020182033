@@ -48,13 +48,15 @@ public class MainScene extends BaseScene {
     public static int max_combo;
 
     public enum Layer {
-        hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
+        bg, hit_mark, slide_mark, spin_mark, score_mark, ui, COUNT
     }
 
     public MainScene(int song_id) {
         this.song_id = song_id;
 
         initLayers(Layer.COUNT);
+
+        add(TitleScene.Layer.bg, new Sprite(R.mipmap.mainbg, Metrics.game_width / 2, Metrics.game_height / 2, Metrics.game_width, Metrics.game_height));
 
         score = new Score(Metrics.game_height - 1.f, Metrics.game_width - 0.5f, 7);
         add(Layer.ui, score);
@@ -139,6 +141,8 @@ public class MainScene extends BaseScene {
 
     @Override
     public void draw(Canvas canvas) {
+        super.draw(canvas);
+
         if(gaugeValue > 50) {
              gauge1.draw(canvas, 1.f);
              gauge2.draw(canvas, (gaugeValue - 50.f) / 50.f);
@@ -147,7 +151,7 @@ public class MainScene extends BaseScene {
             gauge1.draw(canvas, gaugeValue / 50.f);
             gauge2.draw(canvas, 0.f);
         }
-        super.draw(canvas);
+
 
 
         //song_play_time += elapsedNanos / 1_000_000_000f; // 이후 곡 재생 시간으로 변경
