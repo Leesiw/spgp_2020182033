@@ -18,38 +18,14 @@
 
 ![엘리트_게이지](https://user-images.githubusercontent.com/84753357/229353783-f21cf047-e8f8-4ac8-bd21-34c64a3e91ad.png)
 
-## 3종류의 마크
-#### 히트마크
--바깥 쪽의 타임 서클이 줄어들어 히트마크와 겹쳐지는 순간 터치
-
--히트 마크는 숫자 순으로 터치해야 한다 (1->2->3)
-
-![히트 마크](https://user-images.githubusercontent.com/84753357/229354059-be973225-01b2-4215-bd18-7867a895c58d.png)
-
-#### 슬라이드 마크
--공이 시작 부분 부터 끝 부분까지 일정 속도로 이동한다
-
--공에서 손을 떼지 않아야 한다
-
-![슬라이드 마크](https://user-images.githubusercontent.com/84753357/229354076-921dd6ae-6338-48ef-a40a-6510c016045a.png)
-
-#### 스핀 마크
--화면의 원판을 최대한 빨리 돌려야 한다
-
--돌리는 속도에 따라 뒤의 스핀게이지가 상승 하강한다.
-
--스핀 게이지가 끝까지 차있어야 한다.
-
-![스핀마크](https://user-images.githubusercontent.com/84753357/229354088-c5d95178-573f-41d6-a559-e093cdba4192.png)
-
-
 ## 현재까지의 진행 상황
-![진행상황](https://user-images.githubusercontent.com/84753357/236692569-4064fd4d-71c2-4a57-a767-c95c461a38f3.png)
+![진해상황](https://github.com/Leesiw/spgp_2020182033/assets/84753357/2f8bf521-46b0-476c-bc29-b9bc4e0b8bb8)
 
 
 ## Git Commit
 #### github insights commit
-![주차별 commit](https://user-images.githubusercontent.com/84753357/236692649-2d19e1a5-4dab-447b-9d5a-3b17911017af.png)
+![commitinsights](https://github.com/Leesiw/spgp_2020182033/assets/84753357/b1b677de-cf30-4c43-af9c-cc74ad249231)
+
 
 
 #### 주차별 커밋 횟수
@@ -64,15 +40,44 @@
 
 5주차 : 29
 
+6주차 : 3
 
-## Class 구성 정보
+7주차 : 26
+
+8주차 : 0
+
+9주차 : 16
+
+## 사용된 기술
+- json을 이용한 데이터 저장과 json 파싱 기능
+
+
+## 참고한 것들
+- 수업 내용 
+
+- 구글 검색을 통해 찾을 수 있는 자바 관련 코드들
+
+
+## 수업 내용에서 차용한 것
+- 프레임워크
+
+- Paused Scene
+
+- Button
+
+- Score
+
+- Sound
+
+- Sprite, AnimSprite 등
+
+
+## 직접 개발한 것
 
 #### 히트 마크
 -시간에 따라  원이 줄어들고 터치한 타이밍에 따라 점수마크 (별모양 - 300/100/50, x)를 생성하며 소멸한다
 
 -아예 터치 안한다면 일정 시간 후 x 점수 마크 생성 후 소멸
-
--생성 시간(보이기 시작), 터치 시간 등 가지고 있음
 
 ![hitmark](https://user-images.githubusercontent.com/84753357/236692741-9d596c5d-d49e-4699-bde8-7f41d1704bde.gif)
 
@@ -84,8 +89,6 @@
 
 -해당 공을 터치하고 있는지를 10번에 나눠서 체크. 터치하고 있다면 30점 씩 얻는다
 
--생성 시간(보이기 시작), 시작/끝 시간, 시작/끝 좌표 등 가지고 있음
-
 ![slidemark](https://user-images.githubusercontent.com/84753357/236692786-10612104-8f84-47b7-9f43-dd4d8d0dcf39.gif)
 
 
@@ -95,8 +98,6 @@
 -이전 각과 비교해 스핀 마크를 회전 시키고 게이지를 상승 시킨다
 
 -끝나는  시점의 게이지 점수에 따라 300/100/50/x 중 하나의 점수를 부여한다
-
--시작/끝 시간, 게이지 점수 등을 가지고 있음
 
 ![spinmark](https://user-images.githubusercontent.com/84753357/236692840-54634fd3-a6e9-42a9-a2ca-e2eb76829ca3.gif)
 
@@ -111,18 +112,12 @@
 
 ![gauge](https://user-images.githubusercontent.com/84753357/236692975-51789928-8441-464b-b85b-9da4a2cc6093.gif)
 
-#### JSON
+#### score 마크
 
--앱 실행 시 MainActivity가 실행되며 JSON 파싱을 시작한다.
+- 생성 시 부터 투명도가 점점 높아져 오나전히 투명해지면 제거된다
 
--마크를 생성할 때 필요한 데이터들만 담아놓은 배열을 static으로 선언해 두어 JSON 파싱 시 해당 배열에 마크 데이터를 넣어준다. 곡이 2곡 뿐이라 앱 실행 시 모든 곡의 데이터를 가져오도록 했다.
 
--이때 배열은 3중 배열로 설정해 곡의 id와 mark의 종류를 구분해 담아 두었다. (array[곡의id][hitmark] = 해당 곡의 hitmark 데이터들)
+## 아쉬운 것
+- 채보 박자가 정확히 맞지 않는 부분들이 많았던 것
 
-![jsonhitmark](https://github.com/Leesiw/spgp_2020182033/assets/84753357/2efdbe50-badc-452f-9b35-e40b61b41b5a)
-
--MainScene 실행 시 업데이트 부분에서 위의 마크 데이터 배열을 사용한다.
-
-![update](https://github.com/Leesiw/spgp_2020182033/assets/84753357/89639c72-79a7-4b56-a5e0-20e028ba29f9)
-
--모든 JSON 파일이 빨리 등장하는 순으로 작성되어 있다고 가정해 현재까지 등장하지 않은 마크들의 생성 시간과 현재 시간을 비교해 작거나 같다면 마크를 생성/재사용 하고 크다면 해당 배열은 탐색 종료하게 하였다.
+- 시간이 부족해 곡을 약 2분 분량으로 자른 것
